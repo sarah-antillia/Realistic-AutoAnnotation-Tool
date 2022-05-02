@@ -7,7 +7,7 @@ base images, and annotate those images automatically for object detection.
 <h2>1 Realistic AutoAnnotation Tool </h2>
 
 Please clone this repository to your local machine.<br>
->git clone https://github.com/sarah-antillia/Realistic-AutoAnnotation-Tool.git<br>
+git clone https://github.com/sarah-antillia/Realistic-AutoAnnotation-Tool.git<br>
 You can see the following tree structure by tree command, and the projects folder contains a sample project 
 <b>Japanese-RoadSigns-90classes</b>.<br> 
 <h3>1.1 Folder tree structure</h3>
