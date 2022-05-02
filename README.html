@@ -140,28 +140,31 @@ output_dir      = "./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSig
 Sample images of train dataset<br>
 <table>
 <tr><td>
-<img src="./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_90classes/train/jp_roadsigns_90_1000.jpg" width="480" height="auto">
+<img src="./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_90classes/train/jp_roadsigns_90_1000.jpg" width="400" height="auto">
 </td></tr>
 <tr><td>
-<img src="./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_90classes/train/jp_roadsigns_90_1101.jpg" width="480" height="auto">
+<img src="./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_90classes/train/jp_roadsigns_90_1101.jpg" width="400" height="auto">
 </td></tr>
 <tr><td>
-<img src="./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_90classes/train/jp_roadsigns_90_1202.jpg" width="480" height="auto">
+<img src="./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_90classes/train/jp_roadsigns_90_1202.jpg" width="400" height="auto">
 </td></tr>
 <tr><td>
-<img src="./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_90classes/train/jp_roadsigns_90_1303.jpg" width="480" height="auto">
+<img src="./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_90classes/train/jp_roadsigns_90_1303.jpg" width="400" height="auto">
 </td></tr>
 <tr><td>
-<img src="./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_90classes/train/jp_roadsigns_90_1404.jpg" width="480" height="auto">
+<img src="./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_90classes/train/jp_roadsigns_90_1404.jpg" width="400" height="auto">
 </td></tr>
 <tr><td>
-<img src="./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_90classes/train/jp_roadsigns_90_1505.jpg" width="480" height="auto">
+<img src="./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_90classes/train/jp_roadsigns_90_1505.jpg" width="400" height="auto">
 </td></tr>
 <tr><td>
-<img src="./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_90classes/train/jp_roadsigns_90_1606.jpg" width="480" height="auto">
+<img src="./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_90classes/train/jp_roadsigns_90_1606.jpg" width="400" height="auto">
 </td></tr>
 
 </table>
+<br>
+YOLO annotation inspection(Labelme)<br>
+<img src="./assets/YOLOAnnotationInspection.png" width="640" height="auto"><br>
 
 <br>
 <h2>4 Create TFRecord dataset </h2>
@@ -194,7 +197,21 @@ anno_dir    = "./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_9
 
 </pre>
 
-
+<br>
+Please run the following bat file to inspect the generated tfrecord.<br>
+tfrecord_inspect.bat<br>
+<pre>
+python TFRecordInspector.py  ^
+  ./projects/Japanese-RoadSigns-90classes/TFRecord_Japanese_RoadSigns_90classes/train/train.tfrecord ^
+  ./projects/Japanese-RoadSigns-90classes/TFRecord_Japanese_RoadSigns_90classes/label_map.pbtxt ^
+  ./Inspector/train
+</pre>
+<br>
+Objects count in tfrecord:<br>
+<img src="./assets/TFRecordInspector_objects_count.png" width="640" height="auto"><br>
+<br>
+Sample images in tfrecord:<br>
+<img src="./assets/TFRecordInspector_train.png"  width="640" height="auto"><br>
 
 <h2>5 Create realistic test dataset </h2>
 For our sample project <b>Japanese-RoadSigns-90classes</b>, we have created the following bat(sh) file
