@@ -5,30 +5,29 @@ It generates a realistic dataset for training and validation, which is an artifi
 base images, and annotate those images automatically for object detection.
 
 <h2>1 Realistic AutoAnnotation Tool </h2>
-
 Please clone this repository to your local machine.<br>
 git clone https://github.com/sarah-antillia/Realistic-AutoAnnotation-Tool.git<br>
 You can see the following tree structure by tree command, and the projects folder contains a sample project 
 <b>Japanese-RoadSigns-90classes</b>.<br> 
 <h3>1.1 Folder tree structure</h3>
 <pre>
-„¤„Ÿprojects
-    „¤„ŸJapanese-RoadSigns-90classes
-        „¥„Ÿbackground_test
-        „¥„Ÿbackground_train
-        „¥„Ÿbackground_valid
-        „¥„ŸEnhanced_images_test
-        „¥„ŸEnhanced_images_train
-        „¥„ŸEnhanced_images_valid
-        „¥„ŸPNG_RoadSigns_Japan_90classes_small
-        „¥„ŸPNG_RoadSigns_Japan_90classes_tiny
-        „¥„Ÿrealistic_test_dataset
-        „¥„ŸTFRecord_Japanese_RoadSigns_90classes
-        „   „¥„Ÿtrain
-        „   „¤„Ÿvalid
-        „¤„ŸYOLO_Japanese_RoadSigns_90classes
-            „¥„Ÿtrain
-            „¤„Ÿvalid
+â””â”€projects
+    â””â”€Japanese-RoadSigns-90classes
+        â”œâ”€background_test
+        â”œâ”€background_train
+        â”œâ”€background_valid
+        â”œâ”€Enhanced_images_test
+        â”œâ”€Enhanced_images_train
+        â”œâ”€Enhanced_images_valid
+        â”œâ”€PNG_RoadSigns_Japan_90classes_small
+        â”œâ”€PNG_RoadSigns_Japan_90classes_tiny
+        â”œâ”€realistic_test_dataset
+        â”œâ”€TFRecord_Japanese_RoadSigns_90classes
+        â”‚  â”œâ”€train
+        â”‚  â””â”€valid
+        â””â”€YOLO_Japanese_RoadSigns_90classes
+            â”œâ”€train
+            â””â”€valid
 </pre>
  
 <b>PNG_RoadSigns_Japan_90classes_small</b> and <b>PNG_RoadSigns_Japan_90classes_tiny</b> folders contain a set of 
