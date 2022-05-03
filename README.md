@@ -1,7 +1,7 @@
 <h1>Realistic AutoAnnotation Tool (Updated: 2022/05/04)</h1>
 This is an experimental project to implement <b>A Realistic AutoAnnotation Tool(ARAAT)</b> for Object Detection.<br>
 
-It generates a realistic dataset for training and validation, which is an artifically made from a lot of 
+It generates a realistic dataset for training and validation, which is an artificially made from a lot of 
 base images, and annotate those images automatically for object detection.
 
 <h2>1 Realistic AutoAnnotation Tool </h2>
