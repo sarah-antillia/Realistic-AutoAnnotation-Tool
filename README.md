@@ -345,16 +345,16 @@ python ProjectCreator.py jp_signals Japanese_Signals
 
 This generates the following conf files under "./projects/Japanese_Signals"<br>
 <pre>
-./projects\Japanese_Signals\color_enhancer.conf
-./projects\Japanese_Signals\image_enhancer.conf
-./projects\Japanese_Signals\test_dataset_creator.conf
-./projects\Japanese_Signals\train_dataset_creator.conf
-./projects\Japanese_Signals\warp_rotator_small.conf
-./projects\Japanese_Signals\warp_rotator_tiny.conf
-./projects\Japanese_Signals\warp_trapezoider_small.conf
-./projects\Japanese_Signals\warp_trapezoider_tiny.conf
-./projects\Japanese_Signals\yolo2coco_creator.conf
-./projects\Japanese_Signals\yolo2tfrecord_creator.conf
+./projects/Japanese_Signals/color_enhancer.conf
+./projects/Japanese_Signals/image_enhancer.conf
+./projects/Japanese_Signals/test_dataset_creator.conf
+./projects/Japanese_Signals/train_dataset_creator.conf
+./projects/Japanese_Signals/warp_rotator_small.conf
+./projects/Japanese_Signals/warp_rotator_tiny.conf
+./projects/Japanese_Signals/warp_trapezoider_small.conf
+./projects/Japanese_Signals/warp_trapezoider_tiny.conf
+./projects/Japanese_Signals/yolo2coco_creator.conf
+./projects/Japanese_Signals/yolo2tfrecord_creator.conf
 </pre>
 , and bat files under "./" <br>
 <pre>
