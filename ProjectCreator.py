@@ -22,41 +22,11 @@ import sys
 import glob
 import traceback
 from BatScriptCreator import BatScriptCreator
-
-class ProjectCreator:
-
-  def __init__(self, template_dir):
-    self.template_dir = template_dir
-    self.DATASET_NAME = "{DATASET_NAME}"
-    self.PROJECT_NAME = "{PROJECT_NAME}"
-
-  def run(self, dataset_name, project_name, output_dir):
-    print("=== ProjectCreator run")
-    pattern = self.template_dir + "/*.conf"
-    configs = glob.glob(pattern)
-    # 1: copy *.conf files in template_dir to output_dir
-    for conf in configs:
-      basename    = os.path.basename(conf)
-
-      output_conf = os.path.join(output_dir, basename)
- 
-      tf = open(conf, "r")
-      if tf == None:
-        raise Exception("Failed to open conf file:{}".format(conf))
-      lines = tf.readlines()
-      tf.close()
-      new_lines = []
-      for line in lines:
-        line = line.replace(self.DATASET_NAME, dataset_name)
-        line = line.replace(self.PROJECT_NAME, project_name)
-        new_lines.append(line)
-      with open(output_conf, "w") as cf:
-         cf.writelines(new_lines)
-      print("=== Created {}".format(output_conf))
+from ConfigCreator import ConfigCreator
 
 # python ProjectCreator.py jp_signals Japanese_Signals
 
-usage = "python ProjectCreator.py jp_signals Japanese_Signals"
+usage = "python ProjectCreator.py dataset_name project_name"
 
 if __name__ == "__main__":
   #conf template dir
@@ -80,11 +50,11 @@ if __name__ == "__main__":
     if not os.path.exists(output_dir):
       os.makedirs(output_dir)
     
-    pcreator = ProjectCreator(template_dir)
-    pcreator.run(dataset_name, project_name, output_dir)
+    config_creator = ConfigCreator(template_dir)
+    config_creator.run(dataset_name, project_name, output_dir)
 
-    bcreator = BatScriptCreator(btemplate_dir)
-    bcreator.run(dataset_name, project_name, output_dir=boutput_dir)
+    bat_creator = BatScriptCreator(btemplate_dir)
+    bat_creator.run(dataset_name, project_name, output_dir=boutput_dir)
   
   except:
     traceback.print_exc()

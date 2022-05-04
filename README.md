@@ -1,4 +1,4 @@
-<h1>Realistic AutoAnnotation Tool (Updated: 2022/05/04)</h1>
+<h1>Realistic AutoAnnotation Tool (Updated: 2022/05/05)</h1>
 This is an experimental project to implement <b>A Realistic AutoAnnotation Tool(ARAAT)</b> for Object Detection.<br>
 
 It generates a realistic dataset for training and validation, which is an artificially made from a lot of 
@@ -390,4 +390,44 @@ output_dir      = "./projects/Japanese_Signals/YOLO_Japanese_Signals/valid"
 </pre>
 
 
+<h3>7.3 Create classes file</h3>
+Please create <b>classes.txt</b> file containing all classe under of your project folder.<br>
+<pre>
+./projects/Japanese_Signals/classes.txt
+</pre>
+This can be used to create YOLO annotation files.<br>
+In case of this project, it will be the following.<br>
+<pre>
+Pedestrian_Signal_Blue
+Pedestrian_Signal_Red
+Traffic_Signal_Blue
+Traffic_Signal_Red
+Traffic_Signal_Yellow
+</pre>
 
+<h3>7.4 Copy objects and backgrounds image files</h3>
+1. Copy the PNG signals files to your project folders.<br>
+<pre>
+./projects/Japanese_Signals/PNG_Japanese_Signals_small
+./projects/Japanese_Signals/PNG_Japanese_Signals_tiny
+</pre>
+2. Copy the JPG background files to your project folders.<br>
+<pre>
+./projects/Japanese_Signals/background_train
+./projects/Japanese_Signals/background_valid
+./projects/Japanese_Signals/background_test
+</pre>
+
+<br>
+<h3>7.5 Run dataset creation commands</h3>
+<pre>
+jp_signals_image_enhancer.bat
+jp_signals_yolo_train_dataset_creator.bat
+jp_signals_yolo_test_dataset_creator.bat
+</pre>
+
+If you need COCO and TFRecord annotated dataset, run the following commands.<br>
+<pre>
+jp_signals_coco_creator.bat
+jp_signals_tfrecord_creator.bat
+</pre>
