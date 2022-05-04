@@ -187,7 +187,7 @@ YOLO annotation inspection(Labelme)<br>
 
 <br>
 <h2><a name="4">4 Create TFRecord dataset</a> </h2>
-For our sample project <b>Japanese-RoadSigns-90classes</b>, we have created the following bat(sh) file <b>
+For our sample project <b>Japanese-RoadSigns-90classes</b>, we have created the following bat file <b>
 jp_roadsigns_tfrecord_creator.bat</b>, which will create train and valid TFRecord from YOLO annotated dataset.
 <pre>
 python YOLO2TFRecordCreator.py ./projects/Japanese-RoadSigns-90classes/yolo2tfrecord_creator.conf
@@ -235,7 +235,7 @@ Sample images in tfrecord:<br>
 
 <br>
 <h2><a name="5">5 Create COCO dataset</a> </h2>
-For our sample project <b>Japanese-RoadSigns-90classes</b>, we have created the following bat(sh) file <b>
+For our sample project <b>Japanese-RoadSigns-90classes</b>, we have created the following bat file <b>
 jp_roadsigns_coco_creator.bat</b>, which will create train and valid coco annotation json files 
 from YOLO annotated dataset.
 <pre>
@@ -265,7 +265,7 @@ output_dir  = "./projects/Japanese-RoadSigns-90classes/COCO_Japanese_RoadSigns_9
 
 
 <h2><a name="6">6 Create realistic test dataset</a> </h2>
-For our sample project <b>Japanese-RoadSigns-90classes</b>, we have created the following bat(sh) file
+For our sample project <b>Japanese-RoadSigns-90classes</b>, we have created the following bat file
 <b>jp_roadsigns_yolo_test_dataset_creator.bat</b>, which will create realistic test dataset with YOLO annotation.
 <pre>
 python YOLOTestDatasetCreator.py ./projects/Japanese-RoadSigns-90classes/test_dataset_creator.conf
