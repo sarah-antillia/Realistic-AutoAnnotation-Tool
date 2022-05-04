@@ -386,10 +386,8 @@ output_dir      = "./projects/Japanese_Signals/YOLO_Japanese_Signals/train"
 backgrounds_dir = "./projects/Japanese_Signals/background_valid"
 images_dir      = "./projects/Japanese_Signals/Enhanced_images_valid"
 output_dir      = "./projects/Japanese_Signals/YOLO_Japanese_Signals/valid"
-
 </pre>
-
-
+<br>
 <h3>7.3 Create classes file</h3>
 Please create <b>classes.txt</b> file containing all classe under of your project folder.<br>
 <pre>
