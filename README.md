@@ -182,7 +182,7 @@ Sample images of train dataset<br>
 
 </table>
 <br>
-YOLO annotation inspection(Labelme)<br>
+YOLO annotation inspection(LabelImg)<br>
 <img src="./assets/YOLOAnnotationInspection.png" width="640" height="auto"><br>
 
 <br>
