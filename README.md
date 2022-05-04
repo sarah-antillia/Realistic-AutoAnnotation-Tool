@@ -234,7 +234,10 @@ Objects count in tfrecord:<br>
 Sample images in tfrecord:<br>
 <img src="./assets/TFRecordInspector_train.png"  width="640" height="auto"><br>
 
-
+<br>
+Label map
+<a href="./projects/Japanese-RoadSigns-90classes/TFRecord_Japanese_RoadSigns_90classes/label_map.pbtxt">label_map.pbtxt</a>
+<br>
 <br>
 <h2><a name="5">5 Create COCO dataset</a> </h2>
 For our sample project <b>Japanese-RoadSigns-90classes</b>, we have created the following bat file <b>
@@ -264,7 +267,13 @@ images_dir  = "./projects/Japanese-RoadSigns-90classes/YOLO_Japanese_RoadSigns_9
 output_dir  = "./projects/Japanese-RoadSigns-90classes/COCO_Japanese_RoadSigns_90classes/valid"
 
 </pre>
+<br>
+COCO annotation files:<br>
+<br>
+<a href="./projects/Japanese-RoadSigns-90classes/COCO_Japanese_RoadSigns_90classes/train/annotation.json">train annotation</a><br>
+<a href="./projects/Japanese-RoadSigns-90classes/COCO_Japanese_RoadSigns_90classes/valid/annotation.json">valid annotation</a><br>
 
+<br>
 
 <h2><a name="6">6 Create realistic test dataset</a> </h2>
 For our sample project <b>Japanese-RoadSigns-90classes</b>, we have created the following bat file
@@ -431,3 +440,8 @@ If you need COCO and TFRecord annotated dataset, please run the following comman
 jp_signals_coco_creator.bat
 jp_signals_tfrecord_creator.bat
 </pre>
+
+See also;<br>
+<a href="https://github.com/atlan-antillia/EfficientDet-Japanese-Signals">EfficientDet-Japanese-Signals</a>
+
+
