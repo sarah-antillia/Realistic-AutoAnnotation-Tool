@@ -20,6 +20,7 @@ You can see the following tree structure by tree command, and the projects folde
 <b>Japanese-RoadSigns-90classes</b>.<br> 
 <h3>1.1 Folder tree structure</h3>
 <pre>
+├─btemplate
 └─projects
     ├─template
     └─Japanese-RoadSigns-90classes
@@ -344,17 +345,27 @@ python ProjectCreator.py jp_signals Japanese_Signals
 
 This generates the following conf files under "./projects/Japanese_Signals"<br>
 <pre>
-color_enhancer.conf
-image_enhancer.conf
-test_dataset_creator.conf
-train_dataset_creator.conf
-warp_rotator_small.conf
-warp_rotator_tiny.conf
-warp_trapezoider_small.conf
-warp_trapezoider_tiny.conf
-yolo2coco_creator.conf
-yolo2tfrecord_creator.conf
+./projects\Japanese_Signals\color_enhancer.conf
+./projects\Japanese_Signals\image_enhancer.conf
+./projects\Japanese_Signals\test_dataset_creator.conf
+./projects\Japanese_Signals\train_dataset_creator.conf
+./projects\Japanese_Signals\warp_rotator_small.conf
+./projects\Japanese_Signals\warp_rotator_tiny.conf
+./projects\Japanese_Signals\warp_trapezoider_small.conf
+./projects\Japanese_Signals\warp_trapezoider_tiny.conf
+./projects\Japanese_Signals\yolo2coco_creator.conf
+./projects\Japanese_Signals\yolo2tfrecord_creator.conf
 </pre>
+, and bat files under "./" <br>
+<pre>
+./jp_signals_coco_creator.bat
+./jp_signals_image_enhancer.bat
+./jp_signals_tfrecord_creator.bat
+./jp_signals_yolo_test_dataset_creator.bat
+./jp_signals_yolo_train_dataset_creator.bat
+
+</pre>
+
 For example, <b>train_dataset_creator.conf</b> is the following.<br>
 <pre>
 ; train_dataset_creator.conf

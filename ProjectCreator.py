@@ -21,48 +21,52 @@ import os
 import sys
 import glob
 import traceback
-import shutil
+from BatScriptCreator import BatScriptCreator
 
 class ProjectCreator:
 
-  def __init__(self, tempate_dir):
+  def __init__(self, template_dir):
     self.template_dir = template_dir
+    self.DATASET_NAME = "{DATASET_NAME}"
+    self.PROJECT_NAME = "{PROJECT_NAME}"
 
   def run(self, dataset_name, project_name, output_dir):
+    print("=== ProjectCreator run")
     pattern = self.template_dir + "/*.conf"
     configs = glob.glob(pattern)
     # 1: copy *.conf files in template_dir to output_dir
     for conf in configs:
       basename    = os.path.basename(conf)
+
       output_conf = os.path.join(output_dir, basename)
-      shutil.copy2(conf, output_conf)
-
-    # 2 Replace {DATASET_NAME} in *.conf in output_dir to dataset_name
-    #  {PROJECT_NAME} to project_name
-    pattern = output_dir + "/*.conf"
-    configs = glob.glob(pattern)
-    for conf in configs:
-       tf = open(conf, "r")
-       lines = tf.readlines()
-       tf.close()
-       new_lines = []
-       for line in lines:
-         line = line.replace("{DATASET_NAME}", dataset_name)
-         line = line.replace("{PROJECT_NAME}", project_name)
-         new_lines.append(line)
-       with open(conf, "w") as cf:
+ 
+      tf = open(conf, "r")
+      if tf == None:
+        raise Exception("Failed to open conf file:{}".format(conf))
+      lines = tf.readlines()
+      tf.close()
+      new_lines = []
+      for line in lines:
+        line = line.replace(self.DATASET_NAME, dataset_name)
+        line = line.replace(self.PROJECT_NAME, project_name)
+        new_lines.append(line)
+      with open(output_conf, "w") as cf:
          cf.writelines(new_lines)
-
+      print("=== Created {}".format(output_conf))
 
 # python ProjectCreator.py jp_signals Japanese_Signals
 
 usage = "python ProjectCreator.py jp_signals Japanese_Signals"
 
 if __name__ == "__main__":
-  template_dir = "./projects/template/"
-  dataset_name = ""  
-  project_name = ""  # project_folder_name
-  output_dir   = "./projects"
+  #conf template dir
+  template_dir  = "./projects/template/"
+  dataset_name  = ""  
+  project_name  = ""  # project_folder_name
+  output_dir    = "./projects"
+  #bat template dir
+  btemplate_dir = "./btemplate"
+  boutput_dir   = "./"
   try:
     if len(sys.argv) == 3:
       dataset_name = sys.argv[1]
@@ -75,9 +79,12 @@ if __name__ == "__main__":
     output_dir = os.path.join("./projects", project_name)
     if not os.path.exists(output_dir):
       os.makedirs(output_dir)
+    
+    pcreator = ProjectCreator(template_dir)
+    pcreator.run(dataset_name, project_name, output_dir)
 
-    creator = ProjectCreator(template_dir)
-    creator.run(dataset_name, project_name, output_dir)
-
+    bcreator = BatScriptCreator(btemplate_dir)
+    bcreator.run(dataset_name, project_name, output_dir=boutput_dir)
+  
   except:
     traceback.print_exc()
