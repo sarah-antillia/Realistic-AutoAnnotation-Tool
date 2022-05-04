@@ -3,8 +3,17 @@ This is an experimental project to implement <b>A Realistic AutoAnnotation Tool(
 
 It generates a realistic dataset for training and validation, which is an artificially made from a lot of 
 base images, and annotate those images automatically for object detection.
+<br>
+<a href="#1">1 Realistic AutoAnnotation Tool</a><br>
+<a href="#2">2 Generate enhanced images</a><br>
+<a href="#3">3 Create YOLO dataset</a><br>
+<a href="#4">4 Create TFRecord dataset </a><br>
+<a href="#5">5 Create COCO dataset</a><br>
+<a href="#6">6 Create realistic test dataset </a><br>
+<a href="#7">7 Create your own dataset</a><br>
 
-<h2>1 Realistic AutoAnnotation Tool </h2>
+<br>
+<h2><a name="1">1 Realistic AutoAnnotation Tool</a> </h2>
 Please clone this repository to your local machine.<br>
 git clone https://github.com/sarah-antillia/Realistic-AutoAnnotation-Tool.git<br>
 You can see the following tree structure by tree command, and the projects folder contains a sample project 
@@ -12,6 +21,7 @@ You can see the following tree structure by tree command, and the projects folde
 <h3>1.1 Folder tree structure</h3>
 <pre>
 └─projects
+    ├─template
     └─Japanese-RoadSigns-90classes
         ├─background_test
         ├─background_train
@@ -49,20 +59,9 @@ The following folders contain annotated train and valid dataset which have been 
 The following folder contains test dataset which has been generate by this tool.<br>
 <b><a href="./projects/Japanese-RoadSigns-90classes/realistic_test_dataset">realistic_test_dataset</a></b><br>
 <br>
-<h3>1.2 Create your own project </h3>
-If you would like to get started your own project, you have to do:<br>
-1. Create your own project under the <b>projects</b> folder.<br>
-2. Prepare a minimum set of object images of some classes.<br>
-  Those images must be PNG format, and image size less than 240x240.<br>  
-3. Prepare a set of background images to create train and valid image dataset.<br>
-  Those backgrounds must have same image size 512x512. <br>
-4. Prepare a set of background images to create test image dataset.<br>
-  Those backgrounds must have same image size 1280x720. <br>
-The minimum image set will be augumented by our augumentation tool(python scripts), and the augumented images 
-will be pasted on train, valid, test bacground images to generate realistic dataset for object detection.<br>
  
 <br>
-<h2>2 Generate enhanced images </h2>
+<h2><a name="2">2 Generate enhanced images</a> </h2>
 For our sample project <b>Japanese-RoadSigns-90classes</b>, we have created the following bat(sh) file 
 <b>jp_roadsigns_image_enhancer.bat</b>, which will create enhanced images from base object images.<br>
 <pre>
@@ -127,7 +126,7 @@ ws_list     = [0.01]
 hs_list     = [0.02]
 </pre>
 
-<h2>3 Create YOLO dataset</h2>
+<h2><a name="3">3 Create YOLO dataset</a></h2>
 For our sample project <b>Japanese-RoadSigns-90classes</b>, we have created the following bat(sh) file.<br>
 jp_roadsigns_yolo_train_dataset_creator.bat<br>, which will create train and valid dataset with YOLO annotation format.
 <pre>
@@ -186,7 +185,7 @@ YOLO annotation inspection(Labelme)<br>
 <img src="./assets/YOLOAnnotationInspection.png" width="640" height="auto"><br>
 
 <br>
-<h2>4 Create TFRecord dataset </h2>
+<h2><a name="4">4 Create TFRecord dataset</a> </h2>
 For our sample project <b>Japanese-RoadSigns-90classes</b>, we have created the following bat(sh) file <b>
 jp_roadsigns_tfrecord_creator.bat</b>, which will create train and valid TFRecord from YOLO annotated dataset.
 <pre>
@@ -234,7 +233,7 @@ Sample images in tfrecord:<br>
 
 
 <br>
-<h2>5 Create COCO dataset </h2>
+<h2><a name="5">5 Create COCO dataset</a> </h2>
 For our sample project <b>Japanese-RoadSigns-90classes</b>, we have created the following bat(sh) file <b>
 jp_roadsigns_coco_creator.bat</b>, which will create train and valid coco annotation json files 
 from YOLO annotated dataset.
@@ -264,7 +263,7 @@ output_dir  = "./projects/Japanese-RoadSigns-90classes/COCO_Japanese_RoadSigns_9
 </pre>
 
 
-<h2>6 Create realistic test dataset </h2>
+<h2><a name="6">6 Create realistic test dataset</a> </h2>
 For our sample project <b>Japanese-RoadSigns-90classes</b>, we have created the following bat(sh) file
 <b>jp_roadsigns_yolo_test_dataset_creator.bat</b>, which will create realistic test dataset with YOLO annotation.
 <pre>
@@ -315,5 +314,69 @@ Sample images of realist_test_dataset<br>
 </td></tr>
 
 </table>
+<h2><a name="7">7 Create your own dataset</a></h2>
+<h3>7.1 Prepare a set of object and background images  </h3>
+If you would like to get started your own project, you have to do:<br>
+1. Create your own project under the <b>projects</b> folder.<br>
+2. Prepare a minimum set of object images of some classes.<br>
+  Those images must be PNG format, and image size less than 240x240.<br>  
+3. Prepare a set of background images to create train and valid image dataset.<br>
+  Those backgrounds must have same image size 512x512. <br>
+4. Prepare a set of background images to create test image dataset.<br>
+  Those backgrounds must have same image size 1280x720. <br>
+  <br>
+The minimum image set will be augumented by our augumentation tool(python scripts), and the augumented images 
+will be pasted on train, valid, test bacground images to generate realistic dataset for object detection.<br>
+<br>
+
+<h3>7.2 Create config files</h3>
+Please run the following command to create conf files for your project.<br>
+<pre>
+python ProjectCreator.py dataset_name project_name
+</pre>
+This command creates conf files for the project_name from conf files in "./projects/template" folder.
+<br>
+Example: <b>Japanese_Signals</b> project<br>
+
+<pre>
+python ProjectCreator.py jp_signals Japanese_Signals
+</pre>
+
+This generates the following conf files under "./projects/Japanese_Signals"<br>
+<pre>
+color_enhancer.conf
+image_enhancer.conf
+test_dataset_creator.conf
+train_dataset_creator.conf
+warp_rotator_small.conf
+warp_rotator_tiny.conf
+warp_trapezoider_small.conf
+warp_trapezoider_tiny.conf
+yolo2coco_creator.conf
+yolo2tfrecord_creator.conf
+</pre>
+For example, <b>train_dataset_creator.conf</b> is the following.<br>
+<pre>
+; train_dataset_creator.conf
+[dataset]
+name            = "jp_signals"
+copyright       = "antillia.com"
+version         = "1.0"
+background_size = [512,512]
+max_image_size  = [240,240]
+classes         = "./projects/Japanese_Signals/classes.txt"
+
+[train]
+backgrounds_dir = "./projects/Japanese_Signals/background_train"
+images_dir      = "./projects/Japanese_Signals/Enhanced_images_train"
+output_dir      = "./projects/Japanese_Signals/YOLO_Japanese_Signals/train"
+
+[valid]
+backgrounds_dir = "./projects/Japanese_Signals/background_valid"
+images_dir      = "./projects/Japanese_Signals/Enhanced_images_valid"
+output_dir      = "./projects/Japanese_Signals/YOLO_Japanese_Signals/valid"
+
+</pre>
+
 
 
