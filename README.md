@@ -389,12 +389,12 @@ output_dir      = "./projects/Japanese_Signals/YOLO_Japanese_Signals/valid"
 </pre>
 <br>
 <h3>7.3 Create classes file</h3>
-Please create <b>classes.txt</b> file containing all classe under of your project folder.<br>
+Please create <b>classes.txt</b> file containing all classes under your project folder.<br>
 <pre>
 ./projects/Japanese_Signals/classes.txt
 </pre>
 This can be used to create YOLO annotation files.<br>
-In case of this project, it will be the following.<br>
+In this case, it will be the following.<br>
 <pre>
 Pedestrian_Signal_Blue
 Pedestrian_Signal_Red
@@ -424,7 +424,7 @@ jp_signals_yolo_train_dataset_creator.bat
 jp_signals_yolo_test_dataset_creator.bat
 </pre>
 
-If you need COCO and TFRecord annotated dataset, run the following commands.<br>
+If you need COCO and TFRecord annotated dataset, please run the following commands.<br>
 <pre>
 jp_signals_coco_creator.bat
 jp_signals_tfrecord_creator.bat
