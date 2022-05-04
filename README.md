@@ -235,10 +235,11 @@ Objects count in tfrecord:<br>
 Sample images in tfrecord:<br>
 <img src="./assets/TFRecordInspector_train.png"  width="640" height="auto"><br>
 
-<br>
 Label map
 <a href="./projects/Japanese-RoadSigns-90classes/TFRecord_Japanese_RoadSigns_90classes/label_map.pbtxt">label_map.pbtxt</a>
 <br>
+See also:<br>
+<a href="https://github.com/atlan-antillia/EfficientDet-Slightly-Realistic-Japanese-RoadSigns">EfficientDet-Slightly-Realistic-Japanese-RoadSigns</a>
 <br>
 <h2><a name="5">5 Create COCO dataset</a> </h2>
 For our sample project <b>Japanese-RoadSigns-90classes</b>, we have created the following bat file <b>
