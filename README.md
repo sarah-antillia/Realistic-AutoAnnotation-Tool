@@ -11,7 +11,7 @@ to generate a lot of realistic and artificial images from some real or realistic
  by using any image augumentation methods.
 In this project, we try to design and implement a Realistic AutoAnnotation Tool, which genenetes a 
 realistc images dataset,and annotation files to those images automatically,without any manual mouse operations 
-of a GUI-based annotaion tool.
+of a GUI-based annotation tool.
  
 <br>
 <a href="#1">1 Antillia Realistic AutoAnnotation Tool</a><br>
