@@ -3,8 +3,9 @@ This is an experimental project to develop <b>Antillia Realistic AutoAnnotation 
 
 It generates a realistic image dataset for training and validation, which is artificially made from a small 
 real or realistic images, and annotate those images automatically for object detection.<br>
-For example, imagine to take a lot of real roadsigns pictures in US in a real world for 
-training of object detection task.Probably, it is difficult to gather enough pictures, because the classes of roadsigns in US is more than 100.<br>
+For example, imagine to take a lot of real roadsigns pictures in US in a real world.Probably, 
+it is difficult to gather enough pictures of all classes for training of object detection task, 
+because the classes of roadsigns in US is more than 160.<br>
 One of other approaches to alleviate the difficulties is to generate a lot of realistic and artificial images from some real or realistic object images including illustration
  by using any image augumentation methods.<br>
 In this project, we try to design and implement a Realistic AutoAnnotation Tool, which genenetes a 
