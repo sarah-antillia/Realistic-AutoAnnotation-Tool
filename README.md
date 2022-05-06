@@ -1,14 +1,12 @@
 <h1>Antillia Realistic AutoAnnotation Tool (Updated: 2022/05/05)</h1>
-This is an experimental project to implement <b>Antillia Realistic AutoAnnotation Tool(ARAAT)</b> for Object Detection.<br>
+This is an experimental project to develop <b>Antillia Realistic AutoAnnotation Tool(ARAAT)</b> for Object Detection.<br>
 
 It generates a realistic image dataset for training and validation, which is artificially made from a small 
 real or realistic images, and annotate those images automatically for object detection.<br>
 For example, imagine to take a lot of real roadsigns pictures in US in a real world for 
-training of object detection task.
-Probably, it is difficult to gather such a pictures, because the classes of roadsigns inUS is more than 160.
-One of other approaches to alleviate the difficulties is  
-to generate a lot of realistic and artificial images from some real or realistic object images including illustration
- by using any image augumentation methods.
+training of object detection task.Probably, it is difficult to gather such a pictures, because the classes of roadsigns in US is more than 100.<br>
+One of other approaches to alleviate the difficulties is to generate a lot of realistic and artificial images from some real or realistic object images including illustration
+ by using any image augumentation methods.<br>
 In this project, we try to design and implement a Realistic AutoAnnotation Tool, which genenetes a 
 realistc images dataset,and annotation files to those images automatically,without any manual mouse operations 
 of a GUI-based annotation tool.
