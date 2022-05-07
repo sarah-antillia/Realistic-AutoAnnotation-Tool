@@ -30,6 +30,7 @@ import traceback
 import random
 import pprint
 from ConfigParser import ConfigParser
+from YOLOMasterDatasetSplitter import YOLOMasterDatasetSplitter
 
 #from LabelMapReader import LabelMapReader
 #import LabelMapReader
@@ -57,7 +58,9 @@ class YOLOTrainDatasetCreator:
 
     print("=== len {} classes {}".format(len(self.classes), self.classes))
     
-    self.BACKGROUND_IMAGE_SIZE = background_size[0] #512
+    self.BACKGROUND_IMAGE_WIDTH  = background_size[0] #[512, 512]
+    self.BACKGROUND_IMAGE_HEIGHT = background_size[1] #[512, 512]
+
     self.MAX_IMAGE_SIZE        = max_image_size[0]
 
   def getClassIndex(self, sname):
@@ -121,7 +124,18 @@ class YOLOTrainDatasetCreator:
     return rc
 
 
-  def create(self, backgrounds_dir, images_dir, output_dir):
+  def run(self, backgrounds_dir, images_dir, output_dir):
+    if os.path.exists(backgrounds_dir) == False:
+       raise Exception("Not found backgrounds_dir {}".format(backgrounds_dir))
+    if os.path.exists(images_dir) == False:
+       raise Exception("Not found images_dir {}".format(images_dir))
+    
+    if os.path.exists(output_dir):
+       shutil.rmtree(output_dir) 
+
+    if os.path.exists(output_dir) == False:
+       os.makedirs(output_dir)  
+  
     #Background 
     background_pattern   = backgrounds_dir  + "/*.jpg"
     background_files     = glob.glob(background_pattern)
@@ -156,7 +170,7 @@ class YOLOTrainDatasetCreator:
     # Paste 4 png images onto background images
     #      
     for n in range(slen):
-        background = background_files[n]
+        background_file = background_files[n]
         
         try:
           image1  = images_files[n]
@@ -169,9 +183,13 @@ class YOLOTrainDatasetCreator:
           break
          
         #background = Image.open(background).convert("RGBA")
-        background = Image.open(background)
+        background = Image.open(background_file)
+        BW, BH = background.size
+        if BW != self.BACKGROUND_IMAGE_WIDTH and BH != self.BACKGROUND_IMAGE_HEIGHT:
+          print("Invalid background image size {} {}".format(BW, BH))
+          break
+        
         sample = [image1, image2, image3, image4]
-
         try:      
           print("--- {} background {}".format(index, background))
           fname = self.dataset_prefix + str(1000+n) + ".jpg"
@@ -240,22 +258,25 @@ class YOLOTrainDatasetCreator:
           traceback.print_exc()
           break
 
-#
-# python YOLOTrainDatasetCreator.py ./projects/Something/dataset_creator.conf train|valid
+# python YOLOTrainDatasetCreator.py ./projects/Something/dataset_creator.conf master
 
-# python YOLOTrainDatasetCreator.py ./projects/Japanese-RoadSigns-90classes/train_dataset_creator.conf train|valid
+# python YOLOTrainDatasetCreator.py ./projects/Japanese-RoadSigns-90classes/train_dataset_creator.conf master
 
 # 
 if __name__ == "__main__":
-  config_ini   = ""
-  target       = ""
-  
+  config_ini = ""
+  target     = ""
+  targets    = ["master", "train", "valid", "test"]
   try:  
     if len(sys.argv) == 3:
        config_ini = sys.argv[1]   # ./projects/Something/dataset_creator.conf
-       target     = sys.argv[2]   # train|valid
+       target     = sys.argv[2]   # master|train|valid|test
     else:
        raise Exception("Invalid parameters")
+    # target should be master
+    if target not in targets:
+      raise Exception("Invalid target " + target)
+
     print("--- config_ini {}".format(config_ini))
     parser = ConfigParser(config_ini)
     DATASET = "dataset"
@@ -263,28 +284,22 @@ if __name__ == "__main__":
     background_size = parser.get(DATASET, "background_size")
     max_image_size  = parser.get(DATASET, "max_image_size")
     classes_file    = parser.get(DATASET, "classes")
+    auto_splitter   = parser.get(DATASET, "auto_splitter")
 
     backgrounds_dir = parser.get(target,  "backgrounds_dir")
     images_dir      = parser.get(target,  "images_dir")
     output_dir      = parser.get(target,  "output_dir")
 
-    if os.path.exists(backgrounds_dir) == False:
-       raise Exception("Not found backgrounds_dir {}".format(backgrounds_dir))
-    if os.path.exists(images_dir) == False:
-       raise Exception("Not found images_dir {}".format(images_dir))
-    
-    if os.path.exists(output_dir):
-       shutil.rmtree(output_dir) 
-
-    if os.path.exists(output_dir) == False:
-       os.makedirs(output_dir)  
-
-    if os.path.exists(classes_file) == False:
-       raise Exception("Not found classes_file {}".format(classes_file))
-
     creator = YOLOTrainDatasetCreator(dataset_name, background_size, max_image_size, classes_file)
+    creator.run(backgrounds_dir, images_dir, output_dir)
 
-    creator.create(backgrounds_dir, images_dir, output_dir)
-    
+    if target == "master":
+       splitted_train_dir = parser.get("train", "output_dir")
+       splitted_valid_dir = parser.get("valid", "output_dir")
+       splitter = YOLOMasterDatasetSplitter()
+       splitter.run(output_dir, splitted_train_dir, splitted_valid_dir, classes_file)
+ 
+
+
   except:
     traceback.print_exc()
