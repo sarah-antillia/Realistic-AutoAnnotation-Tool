@@ -218,7 +218,6 @@ Sample images of train dataset<br>
 <tr><td>
 <img src="./assets/train/jp_roadsigns_1606.jpg" width="320" height="auto">
 </td></tr>
-
 </table>
 
 <h3>3.2 Create realist test dataset</h3>
@@ -283,9 +282,9 @@ Sample images of realist_test_dataset<br>
 </td></tr>
 
 </table>
+<br>
 
 <h2><a name="4">4 Create TFRecord dataset</a> </h2>
-
 In your projecr folder, please run the following <b>4_yolo2tfrecord_converter.bat</b> 
 to convert YOLO annotation dataset to TFRecord:<br>
 <pre>.<br>
