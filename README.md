@@ -39,7 +39,21 @@ You can see the following tree structure by tree command, and the projects folde
     │  └─PNG_Japanese-RoadSigns-90classes_tiny
     └─template    
 </pre>
-<h3>1.2 Create a project</h3>
+<h3>1.2 Prepare a set of object and background images  </h3>
+If you would like to get started your own project, you have to do:<br>
+1. Create your own project under the <b>projects</b> folder.<br>
+2. Prepare a minimum set of object images of some classes.<br>
+  Those images must be PNG format, and image size less than 240x240.<br>  
+3. Prepare a set of background images to create train and valid image dataset.<br>
+  Those backgrounds must have same image size 512x512. <br>
+4. Prepare a set of background images to create test image dataset.<br>
+  Those backgrounds must have same image size 1280x720. <br>
+  <br>
+The minimum image set will be augumented by our augumentation tool(python scripts), and the augumented images 
+will be pasted on train, valid, test bacground images to generate realistic dataset for object detection.<br>
+<br>
+
+<h3>1.3 Create a project</h3>
 Please use ProjectCreator.py to create your own project.<br>
 <pre>
 python ProjectCreator.py dataset_name project_name
