@@ -99,24 +99,24 @@ yolo2tfrecord_converter.conf
 yolo_test_dataset_creator.conf
 yolo_train_dataset_creator.conf
 </pre>
-
-,and the following bat files under your project folder.<br>
+, and the following bat files under your project folder.<br>
 <pre>
-image_enhancer.bat
-yolo2coco_converter.bat
-yolo2pascalvoc_converter.bat
-yolo2tfrecord_converter.bat
-yolo_test_dataset_creator.bat
-yolo_train_dataset_creator.bat
+1_image_enhancer.bat
+2_yolo_train_dataset_creator.bat
+3_yolo_test_dataset_creator.bat
+4_yolo2tfrecord_converter.bat
+5_yolo2coco_converter.bat
+6_yolo2pascalvoc_converter.bat
+tfrecord_inspector.bat
 </pre>
 
 <h2><a name="2">2 Generate Enhanced images</a> </h2>
 
-Please move to your project directory, and run the following <b>image_enhancer.bat</b> to augument original PNG roadsings images:<br>
+Please move to your project directory, and run the following <b>1_image_enhancer.bat</b> to augment original PNG roadsings images:<br>
 <pre>
-./image_enhancer.bat
+./1_image_enhancer.bat
 </pre>
-This bat file is the followng.<br>
+, which is the followng.<br>
 <pre>
 python ../../ImageEnhancer.py ./configs/image_enhancer.conf train
 python ../../ImageEnhancer.py ./configs/image_enhancer.conf valid
@@ -144,14 +144,15 @@ This will generate the following enhanced image folders:<br>
 <h2><a name="3">3 Create YOLO dataset</a></h2>
 
 <h3>3.1 Create train and valid dataset</h3>
-In your projecr folder, please run the following <b>yolo_train_dataset_creator.bat</b>.<br>
+In your projecr folder, please run the following <b>2_yolo_train_dataset_creator.bat</b>.<br>
 <pre>
-./yolo_train_dataset_creator.bat
+./2_yolo_train_dataset_creator.bat
 </pre>
+, which is the following.<br>
 <pre>
 python ../../YOLOTrainDatasetCreator.py ./configs/yolo_train_dataset_creator.conf master
 </pre>
-yolo_train_dataset_creator.conf<br>
+, and yolo_train_dataset_creator.conf<br>
 <pre>
 ; yolo_train_dataset_creator.conf
 ; 2022/05/10 Modified to use splitter to split yolo_master to train and valid when specified master specified
@@ -220,18 +221,16 @@ Sample images of train dataset<br>
 
 </table>
 
-<h3>3.2 Create realist testdataset</h3>
-In your projecr folder, please run the following yolo_test_dataset_creator.bat.<br>
+<h3>3.2 Create realist test dataset</h3>
+In your projecr folder, please run the following <b>3_yolo_test_dataset_creator.bat</b> to create realist test dataset.<br>
 <pre>
-./yolo_test_dataset_creator.bat
+./3_yolo_test_dataset_creator.bat
 </pre>
-yolo_test_dataset_creator.bat is the following.<br>
-
+, which is the following.<br>
 <pre>
 python ../../YOLOTestDatasetCreator.py ./configs/yolo_test_dataset_creator.conf
-
 </pre>
-,and yolo_test_dataset_creator.conf.<br>
+, and yolo_test_dataset_creator.conf.<br>
 <pre>
 ; test_dataset_creator.conf
 [configs]
@@ -287,15 +286,17 @@ Sample images of realist_test_dataset<br>
 
 <h2><a name="4">4 Create TFRecord dataset</a> </h2>
 
-In your projecr folder, please run the following <b> yolo2tfrecord_converter.bat</b>.<br>
+In your projecr folder, please run the following <b>4_yolo2tfrecord_converter.bat</b> 
+to convert YOLO annotation dataset to TFRecord:<br>
+<pre>.<br>
 <pre>
-./yolo2tfrecord_converter.bat <br>
+./4_yolo2tfrecord_converter.bat <br>
 </pre>
-The yolo2tfrecord_converter.bat is the following.<br>
+, which is the following.<br>
 <pre>
 python ../../YOLO2TFRecordConverter.py ./configs/yolo2tfrecord_converter.conf 
 </pre>
-,and yolo2tfrecord_converter.conf<br>
+, and yolo2tfrecord_converter.conf.<br>
 <pre>
 ; yolo2tfrecord_converter.conf
 [configs]
@@ -339,10 +340,10 @@ python ../../TFRecordInspector.py ^
   ./Inspector/train
 </pre>
 <br>
-Objects count in tfrecord:<br>
+Objects count in train.tfrecord:<br>
 <img src="./assets/TFRecordInspector_objects_count.png" width="640" height="auto"><br>
 <br>
-Sample images in tfrecord:<br>
+Sample images in train.tfrecord:<br>
 <img src="./assets/TFRecordInspector_train.png"  width="640" height="auto"><br>
 
 Label map
@@ -355,15 +356,15 @@ See also:<br>
 
 <br>
 <h2><a name="5">5 Create COCO dataset</a> </h2>
-In your project directory, please run the following command to convert YOLO annotation dataset to COCO annotation dataset:<br>
+In your project directory, please run the following <b>5_yolo2coco_converter.bat</b> to convert YOLO annotation dataset to COCO annotation dataset:<br>
 <pre>
-,/yolo2coco_converter.bat
+,/5_yolo2coco_converter.bat
 </pre>
-yolo2coco_converter.bat is the following:<br>
+, which is the following:<br>
 <pre>
 python ../../YOLO2COCOConverter.py ./configs/yolo2coco_converter.conf 
 </pre>
-,and yolo2coco_converter.conf <br>
+,and yolo2coco_converter.conf. <br>
 <pre>
 ; yolo2coco_converter.conf
 [configs]
