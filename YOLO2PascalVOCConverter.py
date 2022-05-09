@@ -14,7 +14,7 @@
 
 # 
 # 2022/05/10 copyright (c) antillia.com
-# YOLO2XMLConverter.py
+# YOLO2PascalVOCConverter.py
 
 import os
 import sys
@@ -51,8 +51,9 @@ Keep_Left
 """
 
 class YOLO2PascalVOCConverter:
-
+  # Constructor
   def __init__(self, classes_file):
+    self.classes_file = classes_file
     self.classes = []
     with open(classes_file, "r") as f:
       all_class_names = f.readlines()
@@ -149,6 +150,9 @@ class YOLO2PascalVOCConverter:
       output_xmlfile = os.path.join(output_dir, xml_filename)
       with open(output_xmlfile, 'w', encoding="utf-8") as f:
         f.write(xml_tree.decode('utf-8'))
+
+      output_classes_file = os.path.join(output_dir, "classes.txt")
+      shutil.copy2(self.classes_file, output_classes_file)
 
 
   def append_object_elements(self, root, annotation_file, width, height):    
