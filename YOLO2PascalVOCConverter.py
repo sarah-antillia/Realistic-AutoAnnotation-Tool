@@ -93,7 +93,6 @@ class YOLO2PascalVOCConverter:
     pattern     = images_dir + "/*.jpg"
     image_files = glob.glob(pattern)
 
-
     for image_file in image_files:
       root = etree.Element("annotation")
 
@@ -154,7 +153,6 @@ class YOLO2PascalVOCConverter:
       output_classes_file = os.path.join(output_dir, "classes.txt")
       shutil.copy2(self.classes_file, output_classes_file)
 
-
   def append_object_elements(self, root, annotation_file, width, height):    
       width  = float(width)
       height = float(height)
@@ -184,7 +182,6 @@ class YOLO2PascalVOCConverter:
         y_max         = y_min + real_height
         class_name    = self.getClassName(class_id)
         object_element= self.create_object_element(class_name, x_min, y_min, x_max, y_max)
-
         root.append(object_element)
 
   def create_object_element(self, label, x_min, y_min, x_max, y_max):
@@ -213,10 +210,7 @@ class YOLO2PascalVOCConverter:
     ymax.text      = str(y_max)
     return object
 
-
-# python YOLO2PascalVOCConverter.py ./classes.txt ./train ./output_dir
-# python YOLO2PascalVOCConverter.py ./projects/YOLO_dataset/classes.txt ./projects/YOLO_dataset/train ./projects/PASCAL_VOC/train
-# python ../../YOLO2PascalVOCConverter.py  ./yolo2pascalvoc_conf all/train/valid
+# python ../../YOLO2PascalVOCConverter.py  ./yolo2pascalvoc_conf 
 if __name__ == '__main__':
   config_ini   = ""
   try:
@@ -224,7 +218,6 @@ if __name__ == '__main__':
       config_ini   = sys.argv[1]
     else:
       raise Exception("Invalid argment")
-
 
     DATASET  = "dataset"
     parser   = ConfigParser(config_ini)
