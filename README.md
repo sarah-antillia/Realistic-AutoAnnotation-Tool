@@ -197,7 +197,7 @@ You can download YOLO Dataset from <a href="https://drive.google.com/drive/folde
 Sample images of train dataset<br>
 <table>
 <tr><td>
-<img src="./assets/train/jp_roadsigns_1000.jpg" width="400" height="auto">
+<img src="./assets/train/jp_roadsigns_1000.jpg" width="320" height="auto">
 </td></tr>
 <tr><td>
 <img src="./assets/train/jp_roadsigns_1101.jpg" width="320" height="auto">
