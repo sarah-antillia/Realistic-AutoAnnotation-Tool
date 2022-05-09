@@ -8,7 +8,7 @@ training of object detection task.
 Probably, it is difficult to gather such a pictures, because the classes of roadsigns inUS is more than 160.
 One of other approaches to alleviate the difficulties is  
 to generate a lot of realistic and artificial images from some real or realistic object images including illustration
- by using any image augumentation methods.
+ by using any image augmentation methods.
 In this project, we try to design and implement a Realistic AutoAnnotation Tool, which genenetes a 
 realistc images dataset,and annotation files to those images automatically,without any manual mouse operations 
 of a GUI-based annotation tool.
@@ -49,7 +49,7 @@ If you would like to get started your own project, you have to do:<br>
 4. Prepare a set of background images to create test image dataset.<br>
   Those backgrounds must have same image size 1280x720. <br>
   <br>
-The minimum image set will be augumented by our augumentation tool(python scripts), and the augumented images 
+The minimum image set will be augumented by our augmentation tool(python scripts), and the augumented images 
 will be pasted on train, valid, test bacground images to generate realistic dataset for object detection.<br>
 <br>
 
