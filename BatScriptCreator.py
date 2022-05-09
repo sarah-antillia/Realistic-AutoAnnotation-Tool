@@ -29,12 +29,12 @@ class BatScriptCreator:
     self.DATASET_NAME = "{DATASET_NAME}"
     self.PROJECT_NAME = "{PROJECT_NAME}"
 
-  def run(self, dataset_name, project_name, output_dir="./"):
+  def run(self, dataset_name, project_name, output_dir):
     print("=== BatScriptCreator run")
     pattern = self.BTEMPLATE + "/*.bat"
 
-    files   = glob.glob(pattern)
-    for file in files:
+    bat_files   = glob.glob(pattern)
+    for file in bat_files:
        basename = os.path.basename(file)
        tf = open(file, "r")
        if tf ==None:
@@ -46,7 +46,7 @@ class BatScriptCreator:
          line = line.replace(self.DATASET_NAME, dataset_name)
          line = line.replace(self.PROJECT_NAME, project_name)
          new_lines.append(line)
-       output_file = os.path.join(output_dir, dataset_name + "_" + basename)
+       output_file = os.path.join(output_dir, basename)
 
        with open(output_file, "w") as bf:
          bf.writelines(new_lines)
@@ -58,16 +58,16 @@ if __name__ == "__main__":
   btemplate    = "./btemplate"
   dataset_name = ""
   project_name  = ""
-  boutput_dir  = "./"
+  output_dir  = "./"
   try:
     if len(sys.argv) == 4:
       dataset_name = sys.argv[1]
       project_name = sys.argv[2]
-      boutput_dir  = sys.argv[3]
+      output_dir  = sys.argv[3]
     else:
       raise Exception("Invalid argument")
     creator = BatScriptCreator()
-    creator.run(dataset_name, project_name, boutput_dir=boutput_dir)
+    creator.run(dataset_name, project_name, output_dir)
          
   except:
     traceback.print_exc()

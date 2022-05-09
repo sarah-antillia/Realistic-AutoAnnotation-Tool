@@ -27,6 +27,8 @@ import numpy as np
 import glob
 import traceback
 import random
+sys.path.append('../../')
+
 from ConfigParser import ConfigParser
 
 class YOLOTestDatasetCreator:

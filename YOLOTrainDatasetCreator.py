@@ -29,6 +29,9 @@ import glob
 import traceback
 import random
 import pprint
+
+sys.path.append('../../')
+
 from ConfigParser import ConfigParser
 from YOLOMasterDatasetSplitter import YOLOMasterDatasetSplitter
 
@@ -203,8 +206,8 @@ class YOLOTrainDatasetCreator:
           g = 10
           SPACE = " "
           NL    = "\n"
-          bgwidth  = self.BACKGROUND_IMAGE_SIZE #512 
-          bgheight = self.BACKGROUND_IMAGE_SIZE #512
+          bgwidth  = self.BACKGROUND_IMAGE_WIDTH #512 
+          bgheight = self.BACKGROUND_IMAGE_HEIGHT #512
 
           with open(annotation, "w") as f:
             for i, image_file in enumerate(sample):

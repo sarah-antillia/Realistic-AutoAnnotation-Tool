@@ -24,6 +24,9 @@ import glob
 import traceback
 import numpy as np
 from PIL import Image, ImageDraw
+
+sys.path.append('../../')
+
 from ConfigParser import ConfigParser
 
 class ImageWarpRotator:

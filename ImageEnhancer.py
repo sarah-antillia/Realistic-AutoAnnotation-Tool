@@ -21,6 +21,8 @@ import glob
 import traceback
 import shutil
 
+sys.path.append('../../')
+
 from ConfigParser import ConfigParser
 from ImageColorEnhancer import ImageColorEnhancer
 from ImageWarpRotator import ImageWarpRotator

@@ -1,4 +1,0 @@
-call jp_roadsigns_image_enhancer.bat
-call jp_roadsigns_yolo_train_dataset_creator.bat
-call jp_roadsigns_tfrecord_creator.bat
-call jp_roadsigns_yolo_test_dataset_creator.bat

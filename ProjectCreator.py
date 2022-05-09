@@ -46,15 +46,26 @@ if __name__ == "__main__":
     if not os.path.exists(template_dir):
       raise Exception("Not found template_dir " + template_dir)
 
+
     output_dir = os.path.join("./projects", project_name)
+    configs_output_dir = os.path.join(output_dir + "/configs")
+    if not os.path.exists(configs_output_dir):
+      os.makedirs(configs_output_dir)
+
     if not os.path.exists(output_dir):
       os.makedirs(output_dir)
     
     config_creator = ConfigCreator(template_dir)
-    config_creator.run(dataset_name, project_name, output_dir)
+    config_creator.run(dataset_name, project_name, configs_output_dir)
+ 
+    #2022/05/10 Moodified booutput_dir to be output_dir of project_name
+    
+    bat_output_dir = output_dir
+    if not os.path.exists(bat_output_dir):
+      os.makedirs(bat_output_dir)
 
     bat_creator = BatScriptCreator(btemplate_dir)
-    bat_creator.run(dataset_name, project_name, output_dir=boutput_dir)
+    bat_creator.run(dataset_name, project_name, bat_output_dir)
   
   except:
     traceback.print_exc()

@@ -29,6 +29,7 @@ import shutil
 import numpy as np
 import cv2
 import traceback
+sys.path.append('../../')
 from ConfigParser import ConfigParser
 
 #TZ_POLICY

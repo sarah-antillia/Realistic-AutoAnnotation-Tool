@@ -24,6 +24,8 @@ import glob
 from PIL import Image
 import random
 import shutil
+
+sys.path.append('../../')
 from ConfigParser import ConfigParser
 
 class ImageColorEnhancer:
