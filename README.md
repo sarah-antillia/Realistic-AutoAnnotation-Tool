@@ -49,7 +49,7 @@ If you would like to get started your own project, you have to do:<br>
 4. Prepare a set of background images to create test image dataset.<br>
   Those backgrounds must have same image size 1280x720. <br>
   <br>
-The minimum image set will be augumented by our augmentation tool(python scripts), and the augumented images 
+The minimum image set will be augmented by our augmentation tool(python scripts), and the augmented images 
 will be pasted on train, valid, test bacground images to generate realistic dataset for object detection.<br>
 <br>
 
@@ -116,7 +116,7 @@ Please move to your project directory, and run the following <b>1_image_enhancer
 <pre>
 ./1_image_enhancer.bat
 </pre>
-, which is the followng.<br>
+, which is the followng:<br>
 <pre>
 python ../../ImageEnhancer.py ./configs/image_enhancer.conf train
 python ../../ImageEnhancer.py ./configs/image_enhancer.conf valid
@@ -148,7 +148,7 @@ In your projecr folder, please run the following <b>2_yolo_train_dataset_creator
 <pre>
 ./2_yolo_train_dataset_creator.bat
 </pre>
-, which is the following.<br>
+, which is the following:<br>
 <pre>
 python ../../YOLOTrainDatasetCreator.py ./configs/yolo_train_dataset_creator.conf master
 </pre>
@@ -192,7 +192,9 @@ This bat file wll generate <b>YOLO_Japanese-RoadSigns-90classes</b> folder, whic
     ├─train
     └─valid
 </pre>
-You can download YOLO Dataset from <a href="https://drive.google.com/drive/folders/1jLK8xfoYydK47q8nomsqCjzDhyg2Npvd?usp=sharing">_Japanese-RoadSigns-90classes-V5</a>.<br>
+The train and valid dataset will be generated automatically from the master by splitting tool.<br>
+
+You can download YOLO Dataset from <a href="https://drive.google.com/drive/folders/1jLK8xfoYydK47q8nomsqCjzDhyg2Npvd?usp=sharing">Japanese-RoadSigns-90classes-V5</a>.<br>
 <br>
 <br>
 Sample images of train dataset<br>
@@ -225,7 +227,7 @@ In your projecr folder, please run the following <b>3_yolo_test_dataset_creator.
 <pre>
 ./3_yolo_test_dataset_creator.bat
 </pre>
-, which is the following.<br>
+, which is the following:<br>
 <pre>
 python ../../YOLOTestDatasetCreator.py ./configs/yolo_test_dataset_creator.conf
 </pre>
