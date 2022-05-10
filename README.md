@@ -192,7 +192,7 @@ This bat file wll generate <b>YOLO_Japanese-RoadSigns-90classes</b> folder, whic
     ├─train
     └─valid
 </pre>
-You can download YOLO Dataset from <a href="https://drive.google.com/drive/folders/1jLK8xfoYydK47q8nomsqCjzDhyg2Npvd?usp=sharing">TFRecord_Japanese-RoadSigns-90classes-V5</a>.<br>
+You can download YOLO Dataset from <a href="https://drive.google.com/drive/folders/1jLK8xfoYydK47q8nomsqCjzDhyg2Npvd?usp=sharing">_Japanese-RoadSigns-90classes-V5</a>.<br>
 <br>
 <br>
 Sample images of train dataset<br>
@@ -220,8 +220,8 @@ Sample images of train dataset<br>
 </td></tr>
 </table>
 
-<h3>3.2 Create realist test dataset</h3>
-In your projecr folder, please run the following <b>3_yolo_test_dataset_creator.bat</b> to create realist test dataset.<br>
+<h3>3.2 Create realistic test dataset</h3>
+In your projecr folder, please run the following <b>3_yolo_test_dataset_creator.bat</b> to create realistic test dataset.<br>
 <pre>
 ./3_yolo_test_dataset_creator.bat
 </pre>
@@ -254,7 +254,7 @@ This wll generate realistc_test_dataset folder, which contain test dataset(image
 <pre>
 └─realistic_test_dataset
 </pre>
-You can download realistic_test_dataset from <a href="https://drive.google.com/drive/folders/1jLK8xfoYydK47q8nomsqCjzDhyg2Npvd?usp=sharing">TFRecord_Japanese-RoadSigns-90classes-V5</a>.<br>
+You can download realistic_test_dataset from <a href="https://drive.google.com/drive/folders/1jLK8xfoYydK47q8nomsqCjzDhyg2Npvd?usp=sharing">Japanese-RoadSigns-90classes-V5</a>.<br>
 <br>
 <table>
 Sample images of realist_test_dataset<br>
@@ -325,7 +325,7 @@ This wll generate <b>TFRecord_Japanese-RoadSigns-90classes</b> folder, which con
     ├─train
     └─valid
 </pre>
-You can download TFRecord Dataset from <a href="https://drive.google.com/drive/folders/1jLK8xfoYydK47q8nomsqCjzDhyg2Npvd?usp=sharing">TFRecord_Japanese-RoadSigns-90classes-V5</a>.<br>
+You can download TFRecord Dataset from <a href="https://drive.google.com/drive/folders/1jLK8xfoYydK47q8nomsqCjzDhyg2Npvd?usp=sharing">Japanese-RoadSigns-90classes-V5</a>.<br>
 <br>
 YOLO annotation inspection(LabelImg)<br>
 <img src="./assets/YOLOAnnotationInspection.png" width="640" height="auto"><br>
@@ -384,5 +384,5 @@ images_dir  = "./YOLO_Japanese-RoadSigns-90classes/valid"
 output_dir  = "./COCO_Japanese-RoadSigns-90classes/valid"
 </pre>
 
-You can download COCO Dataset from <a href="https://drive.google.com/drive/folders/1jLK8xfoYydK47q8nomsqCjzDhyg2Npvd?usp=sharing">TFRecord_Japanese-RoadSigns-90classes-V5</a>.<br>
+You can download COCO Dataset from <a href="https://drive.google.com/drive/folders/1jLK8xfoYydK47q8nomsqCjzDhyg2Npvd?usp=sharing">Japanese-RoadSigns-90classes-V5</a>.<br>
 <br>
