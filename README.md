@@ -288,7 +288,6 @@ Sample images of realist_test_dataset<br>
 <tr><td>
 <img src="./assets/realistic_test_dataset/jp_roadsigns_1006.jpg" width="640" height="auto">
 </td></tr>
-
 </table>
 <br>
 
@@ -394,8 +393,6 @@ output_dir  = "./COCO_Japanese-RoadSigns-90classes/valid"
 
 You can download COCO Dataset from <a href="https://drive.google.com/drive/folders/1jLK8xfoYydK47q8nomsqCjzDhyg2Npvd?usp=sharing">Japanese-RoadSigns-90classes-V5</a>.<br>
 <br>
-
-
 <h2><a name="6">6 Run create command</a> </h2>
 If you would like to create YOLO, TFRecord and COCO dataset from your base image dataset at once, 
 please run the following batch processing command:<br>
