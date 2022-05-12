@@ -1,4 +1,4 @@
-<h1>Antillia Realistic AutoAnnotation Tool (Updated: 2022/05/10)</h1>
+<h1>Antillia Realistic AutoAnnotation Tool (Updated: 2022/05/12)</h1>
 This is an experimental project to implement <b>Antillia Realistic AutoAnnotation Tool(ARAAT)</b> for Object Detection.<br>
 
 It generates a realistic image dataset for training and validation, which is artificially made from a small 
@@ -19,6 +19,7 @@ of a GUI-based annotation tool.
 <a href="#3">3 Create YOLO dataset</a><br>
 <a href="#4">4 Create TFRecord dataset </a><br>
 <a href="#5">5 Create COCO dataset</a><br>
+<a href="#6">6 Run create command</a><br>
 <br>
 <h2><a name="1">1 Antillia Realistic AutoAnnotation Tool</a> </h2>
 We have been using tensorflow 2.4.0 and Python 3.8 environment on Windows11.<br>
@@ -89,6 +90,8 @@ The ProjectCretator.py generates <b>configs</b> folder, which contain the follow
 <pre>
 color_enhancer.conf
 image_enhancer.conf
+warp_parallelogramer_small.conf
+warp_parallelogramer_tiny.conf
 warp_rotator_small.conf
 warp_rotator_tiny.conf
 warp_trapezoider_small.conf
@@ -107,6 +110,7 @@ yolo_train_dataset_creator.conf
 4_yolo2tfrecord_converter.bat
 5_yolo2coco_converter.bat
 6_yolo2pascalvoc_converter.bat
+create.bat
 tfrecord_inspector.bat
 </pre>
 
@@ -124,13 +128,16 @@ python ../../ImageEnhancer.py ./configs/image_enhancer.conf test
 </pre>
 , and the image_enhancer.conf in configs folder.<br>
 <pre>
-;image_enhander.conf
+
 [configs]
-version                       = "2.0"
+;2022/05/12/ Added warp_parallelogramer parameters.
+version                       = "2.1"
 warp_rotator_config_small     = "./configs/warp_rotator_small.conf"
 warp_rotator_config_tiny      = "./configs/warp_rotator_tiny.conf"
 warp_trapezoider_config_small = "./configs/warp_trapezoider_small.conf"
 warp_trapezoider_config_tiny  = "./configs/warp_trapezoider_tiny.conf"
+warp_parallelogramer_small    = "./configs/warp_parallelogramer_small.conf"
+warp_parallelogramer_tiny     = "./configs/warp_parallelogramer_tiny.conf"
 enhanced_images_dir           = "./Enhanced_images"
 </pre>
 
@@ -182,7 +189,6 @@ output_dir      = "./YOLO_Japanese-RoadSigns-90classes/train"
 backgrounds_dir = "./background_valid"
 images_dir      = "./Enhanced_images_valid"
 output_dir      = "./YOLO_Japanese-RoadSigns-90classes/valid"
-
 </pre>
 
 This bat file wll generate <b>YOLO_Japanese-RoadSigns-90classes</b> folder, which contain train and valid dataset(images and annotation files).
@@ -197,7 +203,7 @@ The train and valid dataset will be generated automatically from the master by s
 You can download YOLO Dataset from <a href="https://drive.google.com/drive/folders/1jLK8xfoYydK47q8nomsqCjzDhyg2Npvd?usp=sharing">Japanese-RoadSigns-90classes-V5</a>.<br>
 <br>
 <br>
-Sample images of train dataset<br>
+Sample images of master dataset<br>
 <table>
 <tr><td>
 <img src="./assets/train/jp_roadsigns_1000.jpg" width="320" height="auto">
@@ -388,3 +394,20 @@ output_dir  = "./COCO_Japanese-RoadSigns-90classes/valid"
 
 You can download COCO Dataset from <a href="https://drive.google.com/drive/folders/1jLK8xfoYydK47q8nomsqCjzDhyg2Npvd?usp=sharing">Japanese-RoadSigns-90classes-V5</a>.<br>
 <br>
+
+
+<h2><a name="6">6 Run create command</a> </h2>
+If you would like to create YOLO, TFRecord and COCO dataset from your base image dataset at once, 
+please run the following batch processing command:<br>
+<pre>
+create.bat
+</pre>
+, which is the following.
+<pre>
+call 1_image_enhancer.bat
+call 2_yolo_train_dataset_creator.bat
+call 3_yolo_test_dataset_creator.bat
+call 4_yolo2tfrecord_converter.bat
+call 5_yolo2coco_converter.bat
+</pre>
+
