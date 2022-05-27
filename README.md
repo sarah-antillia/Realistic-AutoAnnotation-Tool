@@ -421,8 +421,7 @@ call 5_yolo2coco_converter.bat
 <br>
 <h2><a name="7">7 USA_RoadSigns_160classes</a> </h2>
 <h3><a name="7.1">7.1. Create USA_RoadSigns_160classes project</a> </h3>
-
-You can create <b>USA_RoadSigns_160classes</b> project by running the following command.<br>
+You can create <b>USA_RoadSigns_160classes</b> project by running the following command.
 <pre>
 python ProjectCreator.py usa_roadsigns USA_RoadSigns_160classes
 </pre>
@@ -439,14 +438,12 @@ python ProjectCreator.py usa_roadsigns USA_RoadSigns_160classes
 See also:
 <a href="https://en.wikipedia.org/wiki/Road_signs_in_the_United_States">Road signs in the United States</a>
 <br>
-
 <h3><a name="7.2">7.2. Run create command</a> </h3>
 Please run the following batch processing command to create YOLO, TFRecord and COCO dataset from your base image dataset at once, 
 <pre>
 create.bat
 </pre>
-<br>
-You can download the following V2 dataset created by the command above:<br>
+You can download the following V2 dataset created by the command above:
 <pre>
 COCO_USA_RoadSigns_160classes_V2.zip
 TFRecord_USA_RoadSigns_160classes_V2.zip
