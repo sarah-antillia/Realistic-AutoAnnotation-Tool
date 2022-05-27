@@ -447,7 +447,9 @@ Please run the following batch processing command to create YOLO, TFRecord and C
 create.bat
 </pre>
 Please run the following bat file to inspect the generated train.tfrecord.<br>
+<pre>
 tfrecord_inspect.bat<br>
+</pre>
 <br>
 Objects count in train.tfrecord:<br>
 <img src="./assets/TFRecordInspector_objects_count_USA_Roadsigns_160classes.png" width="640" height="auto"><br>
