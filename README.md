@@ -74,6 +74,8 @@ Please run the following command to create <b>Japanese-RoadSigns-90classes</b> p
 <pre>
 python ProjectCreator.py jp_roadsigns Japanese-RoadSigns-90classes
 </pre>
+Sample Images:<br>
+<img src="./assets/Japanese_RoadSigns_90classes.png" width="720" height="auto"><br>
 <li>
 <b>PNG_Japanese-RoadSigns-90classes_small</b>: RoadSigns files of small size
 </li>
@@ -305,7 +307,7 @@ Sample images of realist_test_dataset<br>
 <h2><a name="4">4 Create TFRecord dataset</a> </h2>
 In your projecr folder, please run the following <b>4_yolo2tfrecord_converter.bat</b> 
 to convert YOLO annotation dataset to TFRecord:<br>
-<pre>.<br>
+
 <pre>
 ./4_yolo2tfrecord_converter.bat <br>
 </pre>
@@ -418,13 +420,14 @@ call 3_yolo_test_dataset_creator.bat
 call 4_yolo2tfrecord_converter.bat
 call 5_yolo2coco_converter.bat
 </pre>
-<br>
-<h2><a name="7">7 USA_RoadSigns_160classes</a> </h2>
-<h3><a name="7.1">7.1. Create USA_RoadSigns_160classes project</a> </h3>
+<h2><a name="7">7 USA_RoadSigns_160classes</a></h2>
+<h3><a name="7.1">7.1. Create USA_RoadSigns_160classes project</a></h3>
 You can create <b>USA_RoadSigns_160classes</b> project by running the following command.
 <pre>
 python ProjectCreator.py usa_roadsigns USA_RoadSigns_160classes
 </pre>
+Sample Images:<br>
+<img src="./assets/USA_RoadSigns_160classes.png"  width="720" height="auto"><br>
 <li>
 <b>USA_RoadSigns_160classes_small</b>: RoadSigns files of small size
 </li>
