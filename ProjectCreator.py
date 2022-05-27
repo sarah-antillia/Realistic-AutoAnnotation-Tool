@@ -25,17 +25,20 @@ from BatScriptCreator import BatScriptCreator
 from ConfigCreator import ConfigCreator
 
 # python ProjectCreator.py jp_signals Japanese_Signals
+# python ProjectCreator.py jp_roadsigns Japanese-RoadSigns-90classes
+# python ProjectCreator.py usa_roadsigns USA_RoadSigns_160classes
 
 usage = "python ProjectCreator.py dataset_name project_name"
 
 if __name__ == "__main__":
-  #conf template dir
-  template_dir  = "./projects/template/"
+  #config template dir
+  template_dir  = "./config_templates/"
+
   dataset_name  = ""  
   project_name  = ""  # project_folder_name
   output_dir    = "./projects"
-  #bat template dir
-  btemplate_dir = "./btemplate"
+  #bat template dir 
+  btemplate_dir = "./batch_templates"
   boutput_dir   = "./"
   try:
     if len(sys.argv) == 3:

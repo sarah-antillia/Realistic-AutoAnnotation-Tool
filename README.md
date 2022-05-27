@@ -1,4 +1,4 @@
-<h1>Antillia Realistic AutoAnnotation Tool (Updated: 2022/05/12)</h1>
+<h1>Antillia Realistic AutoAnnotation Tool (Updated: 2022/05/27)</h1>
 This is an experimental project to implement <b>Antillia Realistic AutoAnnotation Tool(ARAAT)</b> for Object Detection.<br>
 
 It generates a realistic image dataset for training and validation, which is artificially made from a small 
@@ -20,16 +20,21 @@ of a GUI-based annotation tool.
 <a href="#4">4 Create TFRecord dataset </a><br>
 <a href="#5">5 Create COCO dataset</a><br>
 <a href="#6">6 Run create command</a><br>
+<a href="#7">7 USA_RoadSigns_160classes</a><br>
+<br>
+ We have added a sample project <b>USA_RoadSigns_160classess</b> (2022/05/27).
+
 <br>
 <h2><a name="1">1 Antillia Realistic AutoAnnotation Tool</a> </h2>
 We have been using tensorflow 2.4.0 and Python 3.8 environment on Windows11.<br>
 Please clone this repository to your local machine.<br>
 git clone https://github.com/sarah-antillia/Realistic-AutoAnnotation-Tool.git<br>
-You can see the following tree structure by tree command, and the projects folder contains a sample project 
-<b>Japanese-RoadSigns-90classes</b>.<br> 
+You can see the following tree structure by tree command, and the projects folder contains two sample project 
+<b>Japanese-RoadSigns-90classes</b> and <b>USA_RoadSigns_160classes</b>.<br> 
 <h3>1.1 Folder tree structure</h3>
 <pre>
-├─btemplate
+├─batch_templates
+├─config_templates
 └─projects
     ├─Japanese-RoadSigns-90classes
     │  ├─background_test
@@ -38,7 +43,13 @@ You can see the following tree structure by tree command, and the projects folde
     │  ├─configs
     │  ├─PNG_Japanese-RoadSigns-90classes_small
     │  └─PNG_Japanese-RoadSigns-90classes_tiny
-    └─template    
+    └─USA_RoadSigns_160classes
+        ├─background_test
+        ├─background_train
+        ├─background_valid
+        ├─configs
+        ├─PNG_USA_Roadsigns_160classes_small
+        └─PNG_USA_Roadsigns_160classes_tiny
 </pre>
 <h3>1.2 Prepare a set of object and background images  </h3>
 If you would like to get started your own project, you have to do:<br>
@@ -67,7 +78,7 @@ python ProjectCreator.py jp_roadsigns Japanese-RoadSigns-90classes
 <b>PNG_Japanese-RoadSigns-90classes_small</b>: RoadSigns files of small size
 </li>
 <li>
-<b>PNG_Japanese-RoadSigns-90classes_small_tiny</b>; RoadSigns files of tiny size
+<b>PNG_Japanese-RoadSigns-90classes_tiny</b>; RoadSigns files of tiny size
 </li>
  Those PNG files have been take from the following websites:<br>
 <a href="https://en.wikipedia.org/wiki/Road_signs_in_Japan">en.wikipedia.org:Road signs in Japan</a>
@@ -407,4 +418,40 @@ call 3_yolo_test_dataset_creator.bat
 call 4_yolo2tfrecord_converter.bat
 call 5_yolo2coco_converter.bat
 </pre>
+<br>
+<h2><a name="7">7 USA_RoadSigns_160classes</a> </h2>
+<h3><a name="7.1">7.1. Create USA_RoadSigns_160classes project</a> </h3>
+
+You can create <b>USA_RoadSigns_160classes</b> project by running the following command.<br>
+<pre>
+python ProjectCreator.py usa_roadsigns USA_RoadSigns_160classes
+</pre>
+<li>
+<b>USA_RoadSigns_160classes_small</b>: RoadSigns files of small size
+</li>
+<li>
+<b>USA_RoadSigns_160classes_tiny</b>; RoadSigns files of tiny size
+</li>
+ Those PNG files have been take from the following websites:<br>
+<br>
+<a href="https://github.com/sarah-antillia/PNG_USA_RoadSigns_160classes_V2">PNG_USA_RoadSigns_160classes_V2</a>
+<br>
+See also:
+<a href="https://en.wikipedia.org/wiki/Road_signs_in_the_United_States">Road signs in the United States</a>
+<br>
+
+<h3><a name="7.2">7.2. Run create command</a> </h3>
+Please run the following batch processing command to create YOLO, TFRecord and COCO dataset from your base image dataset at once, 
+<pre>
+create.bat
+</pre>
+<br>
+You can download the following V2 dataset created by the command above:<br>
+<pre>
+COCO_USA_RoadSigns_160classes_V2.zip
+TFRecord_USA_RoadSigns_160classes_V2.zip
+YOLO_USA_RoadSigns_160classes_V2.zip
+</pre>
+from here
+ <a href="https://drive.google.com/drive/u/0/folders/1ht0J3WnqNWXqfHT4QzzZ5xPheYpnhRWW">USA_RoadSigns_160classes_V2</a>.<br>
 
