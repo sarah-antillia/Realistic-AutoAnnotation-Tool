@@ -446,6 +446,12 @@ Please run the following batch processing command to create YOLO, TFRecord and C
 <pre>
 create.bat
 </pre>
+Please run the following bat file to inspect the generated train.tfrecord.<br>
+tfrecord_inspect.bat<br>
+<br>
+Objects count in train.tfrecord:<br>
+<img src="./assets/TFRecordInspector_objects_count_USA_Roadsigns_160classes.png" width="640" height="auto"><br>
+<br>
 You can download the following V2 dataset created by the command above:
 <pre>
 COCO_USA_RoadSigns_160classes_V2.zip
