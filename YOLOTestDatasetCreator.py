@@ -67,7 +67,24 @@ class YOLOTestDatasetCreator:
          break
     return index
 
+  # 2022/05/27 modified
   def getClassName(self, sname):
+    cname = None
+    pos = sname.find("___")
+    if pos >0:
+      sname = sname[0:pos]
+      pos = sname.find("__")
+      if pos >0:
+       cname = sname[0:pos]
+       return cname
+      else:
+        return sname
+    pos = sname.find(".png")
+    if pos >0:
+      cname = sname[0:pos]
+    return cname
+
+  def __getClassName(self, sname):
     cname = None
 
     pos = sname.find("___")

@@ -70,21 +70,23 @@ class YOLOTrainDatasetCreator:
     index = -1
     for i, name in enumerate(self.classes):
       if sname == name:
-         print("----- Found {} {} {}".format(sname, name, i))
+         #print("----- Found {} {} {}".format(sname, name, i))
          index = i
          break
     return index
 
+  # 2022/05/27 modified
   def getClassName(self, sname):
     cname = None
-
     pos = sname.find("___")
     if pos >0:
       sname = sname[0:pos]
-    pos = sname.find("__")
-    if pos >0:
-     cname = sname[0:pos]
-     return cname
+      pos = sname.find("__")
+      if pos >0:
+       cname = sname[0:pos]
+       return cname
+      else:
+        return sname
     pos = sname.find(".png")
     if pos >0:
       cname = sname[0:pos]
@@ -111,8 +113,8 @@ class YOLOTrainDatasetCreator:
   def  paste(self, bg_img, fg_img, px, py):
     rc = True
     w, h = fg_img.size
-    print("----- px     {} py     {}".format(px, py))
-    print("----- px_max {} py_max {}".format(px+w, py+h))
+    #print("----- px     {} py     {}".format(px, py))
+    #print("----- px_max {} py_max {}".format(px+w, py+h))
 
     for x in range(w):
       for y in range(h):
@@ -194,12 +196,12 @@ class YOLOTrainDatasetCreator:
         
         sample = [image1, image2, image3, image4]
         try:      
-          print("--- {} background {}".format(index, background))
+          #print("--- {} background {}".format(index, background))
           fname = self.dataset_prefix + str(1000+n) + ".jpg"
           aname = self.dataset_prefix + str(1000+n) + ".txt"
           outputfile   = os.path.join(output_dir, fname)
           annotation   = os.path.join(output_dir, aname) 
-          print("=== output {}".format(outputfile))
+          #print("=== output {}".format(outputfile))
           i = 0
         
           #g = int((self.BACKGROUND_IMAGE_SIZE - self.MAX_IMAGE_SIZE)/2)
@@ -211,10 +213,10 @@ class YOLOTrainDatasetCreator:
 
           with open(annotation, "w") as f:
             for i, image_file in enumerate(sample):
-              print(" === i {} image {}".format(i, image_file))
+              #print(" === i {} image {}".format(i, image_file))
               image = Image.open(image_file).convert("RGBA")
               W, H = image.size
-              print("--- W: {} H: {}".format(W,H))
+              #print("--- W: {} H: {}".format(W,H))
               # Relayout of each pastable image on the background image to (2x2) 
               if i == 0 or i == 1:
                 n = i
@@ -228,8 +230,10 @@ class YOLOTrainDatasetCreator:
               (px, py, W, H) = self.validatePasteArea(background, image, px, py)
      
               sname = os.path.basename(image_file)
-              print("--- getClassName--------sname {}".format(sname))
+              #print("--- getClassName--------sname {}".format(sname))
               sname = self.getClassName(sname)
+              #print("=== getClassName--------sname {}".format(sname))
+
               classIndex = self.getClassIndex(sname)
               if classIndex == -1:
                 raise Exception("FATAL ERROR: Not found clsss " + sname)
@@ -250,7 +254,7 @@ class YOLOTrainDatasetCreator:
               if rc == False:
                 raise Exception("Failed to paste {}".format(image_file))
                 
-              print("--- pasted {}".format(image_file))
+              #print("--- pasted {}".format(image_file))
             
           print("=== save outputfile {}".format(outputfile))
           background.save(outputfile, quality=95)
