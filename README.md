@@ -1,4 +1,4 @@
-<h1>Antillia Realistic AutoAnnotation Tool (Updated: 2022/05/27)</h1>
+<h1>Antillia Realistic AutoAnnotation Tool (Updated: 2022/05/28)</h1>
 This is an experimental project to implement <b>Antillia Realistic AutoAnnotation Tool(ARAAT)</b> for Object Detection.<br>
 
 It generates a realistic image dataset for training and validation, which is artificially made from a small 
@@ -454,6 +454,10 @@ tfrecord_inspect.bat<br>
 Objects count in train.tfrecord:<br>
 <img src="./assets/TFRecordInspector_objects_count_USA_Roadsigns_160classes.png" width="640" height="auto"><br>
 <br>
+Sample Images in train.tfrecord:<br>
+<br>
+<img src="./assets/TFRecordInspector_train_USA_RoadSigns_160classes.png" width="640" height="auto"><br>
+<br>
 You can download the following V2 dataset created by the command above:
 <pre>
 COCO_USA_RoadSigns_160classes_V2.zip
@@ -461,5 +465,5 @@ TFRecord_USA_RoadSigns_160classes_V2.zip
 YOLO_USA_RoadSigns_160classes_V2.zip
 </pre>
 from here
- <a href="https://drive.google.com/drive/u/0/folders/1ht0J3WnqNWXqfHT4QzzZ5xPheYpnhRWW">USA_RoadSigns_160classes_V2</a>.<br>
+ <a href="https://drive.google.com/drive/folders/1ht0J3WnqNWXqfHT4QzzZ5xPheYpnhRWW?usp=sharing">USA_RoadSigns_160classes_V2</a>.<br>
 
