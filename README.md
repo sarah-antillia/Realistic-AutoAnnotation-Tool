@@ -360,10 +360,10 @@ python ../../TFRecordInspector.py ^
 </pre>
 <br>
 Objects count in train.tfrecord:<br>
-<img src="./assets/TFRecordInspector_objects_count.png" width="640" height="auto"><br>
+<img src="./assets/TFRecordInspector_objects_count_Japanese_RoadSigns_90classes.png" width="640" height="auto"><br>
 <br>
 Sample images in train.tfrecord:<br>
-<img src="./assets/TFRecordInspector_train.png"  width="640" height="auto"><br>
+<img src="./assets/TFRecordInspector_train_Japanese_RoadSigns_90classes.png"  width="640" height="auto"><br>
 
 Label map
 <a href="./asset/label_map.pbtxt">label_map.pbtxt</a>
