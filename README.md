@@ -462,6 +462,7 @@ You can download the following V2 dataset created by the command above:
 <pre>
 COCO_USA_RoadSigns_160classes_V2.zip
 TFRecord_USA_RoadSigns_160classes_V2.zip
+realistic_test_dataset_V2.zip
 YOLO_USA_RoadSigns_160classes_V2.zip
 </pre>
 from here
