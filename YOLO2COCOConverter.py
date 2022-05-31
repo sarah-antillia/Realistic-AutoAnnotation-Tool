@@ -150,7 +150,9 @@ class YOLO2COCOConverter:
 
         jpg_base_filename = os.path.basename(jpg_file)
         output_jpg_file = os.path.join(output_dir, jpg_base_filename)
-        shutil.copy2(jpg_file, output_jpg_file)
+        # 2022/05/31
+        if not os.path.exists(output_jpg_file):
+          shutil.copy2(jpg_file, output_jpg_file)
 
         an_image_sec = self.create_an_image_section(jpg_base_filename, image_width, image_height, image_id)
         images_sec.append(an_image_sec)

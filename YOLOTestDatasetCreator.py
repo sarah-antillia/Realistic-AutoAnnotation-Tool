@@ -14,6 +14,8 @@
 #
 # 
 # 2022/05/10 copyright (c) antillia.com
+# 2022/05/31 Added YOLO2COCOConverter to create a ground truth json(coco_annotation.json) 
+# from yolo annotation files in outout_dir
 
 # YOLOTestDatasetCreator.py
 
@@ -30,6 +32,8 @@ import random
 sys.path.append('../../')
 
 from ConfigParser import ConfigParser
+# 2022/05/31
+from YOLO2COCOConverter import YOLO2COCOConverter
 
 class YOLOTestDatasetCreator:
   # Constructor
@@ -231,6 +235,13 @@ if __name__ == "__main__":
 
     creator = YOLOTestDatasetCreator(dataset_name, background_size, max_image_size, classes_file)
     creator.create(backgrounds_dir, images_dir, output_dir, num_test_dataset)
+    
+    #2022/05/31
+    #Create a coco_annotation.json(ground truth json) from yolo annoation files in outout_dir
+    coco_json    = os.path.join(output_dir, "annotation.json")
+
+    converter = YOLO2COCOConverter(classes_file)  
+    converter.run(output_dir, output_dir, coco_json)
 
   except:
     traceback.print_exc()
