@@ -1,16 +1,16 @@
-<h1>Antillia Realistic AutoAnnotation Tool (Updated: 2022/05/29)</h1>
+<h1>Antillia Realistic AutoAnnotation Tool (Updated: 2022/06/15)</h1>
 This is an experimental project to implement <b>Antillia Realistic AutoAnnotation Tool(ARAAT)</b> for Object Detection.<br>
 
 It generates a realistic image dataset for training and validation, which is artificially made from a small 
 real or realistic images, and annotate those images automatically for object detection.<br>
 For example, imagine to take a lot of real roadsigns pictures in US in a real world for 
 training of object detection task.
-Probably, it is difficult to gather such a pictures, because the classes of roadsigns inUS is more than 160.
+Probably, it is difficult to gather such a pictures, because the classes of roadsigns in US is more than 160.
 One of other approaches to alleviate the difficulties is  
 to generate a lot of realistic and artificial images from some real or realistic object images including illustration
  by using any image augmentation methods.
 In this project, we try to design and implement a Realistic AutoAnnotation Tool, which genenetes a 
-realistc images dataset,and annotation files to those images automatically,without any manual mouse operations 
+realistc images dataset, and annotation files to those images automatically,without any manual mouse operations 
 of a GUI-based annotation tool.
 <br> 
 <br>
@@ -21,8 +21,14 @@ of a GUI-based annotation tool.
 <a href="#5">5 Create COCO dataset</a><br>
 <a href="#6">6 Run create command</a><br>
 <a href="#7">7 USA_RoadSigns_160classes</a><br>
+<a href="#8">8 USA_RoadSigns_86classes</a><br>
 <br>
- We have added a sample project <b>USA_RoadSigns_160classess</b> (2022/05/27).
+<li>
+ Added a sample project <b>USA_RoadSigns_160classess</b> (2022/05/27).
+</li>
+<li>
+ Added a sample project <b>USA_RoadSigns_86classess</b> (2022/06/15).
+</li>
 
 <br>
 <h2><a name="1">1 Antillia Realistic AutoAnnotation Tool</a> </h2>
@@ -420,6 +426,7 @@ call 3_yolo_test_dataset_creator.bat
 call 4_yolo2tfrecord_converter.bat
 call 5_yolo2coco_converter.bat
 </pre>
+
 <h2><a name="7">7 USA_RoadSigns_160classes</a></h2>
 <h3><a name="7.1">7.1. Create USA_RoadSigns_160classes project</a></h3>
 You can create <b>USA_RoadSigns_160classes</b> project by running the following command.
@@ -428,6 +435,7 @@ python ProjectCreator.py usa_roadsigns USA_RoadSigns_160classes
 </pre>
 Sample Images:<br>
 <img src="./assets/USA_RoadSigns_160classes.png"  width="720" height="auto"><br>
+<br>
 <li>
 <b>USA_RoadSigns_160classes_small</b>: RoadSigns files of small size
 </li>
@@ -467,4 +475,56 @@ YOLO_USA_RoadSigns_160classes_V2.zip
 </pre>
 from here
  <a href="https://drive.google.com/drive/folders/1ht0J3WnqNWXqfHT4QzzZ5xPheYpnhRWW?usp=sharing">USA_RoadSigns_160classes_V2</a>.<br>
+
+
+<h2><a name="8">8 USA_RoadSigns_86classes</a></h2>
+<h3><a name="8.1">8.1. Create USA_RoadSigns_86classes project</a></h3>
+You can create <b>USA_RoadSigns_86classes</b> project by running the following command.
+<pre>
+python ProjectCreator.py usa_roadsigns USA_RoadSigns_86classes
+</pre>
+Sample Images:<br>
+<img src="./assets/USA_RoadSigns_86classes.png"  width="720" height="auto"><br>
+<br>
+<li>
+<b>USA_RoadSigns_86classes_small</b>: RoadSigns files of small size
+</li>
+<li>
+<b>USA_RoadSigns_86classes_tiny</b>; RoadSigns files of tiny size
+</li>
+ Those PNG files have been take from the following websites:<br>
+<br>
+<!--
+<a href="https://github.com/sarah-antillia/PNG_USA_RoadSigns_160classes_V2">PNG_USA_RoadSigns_160classes_V2</a>
+<br>
+-->
+<a href="https://en.wikipedia.org/wiki/Road_signs_in_the_United_States">Road signs in the United States</a>
+<br>
+<h3><a name="8.2">8.2. Run create command</a> </h3>
+Please run the following batch processing command to create YOLO, TFRecord and COCO dataset from your base image dataset at once, 
+<pre>
+create.bat
+</pre>
+Please run the following bat file to inspect the generated train.tfrecord.<br>
+<pre>
+tfrecord_inspect.bat<br>
+</pre>
+<br>
+Objects count in train.tfrecord:<br>
+<img src="./assets/TFRecordInspector_objects_count_USA_Roadsigns_86classes.png" width="640" height="auto"><br>
+<br>
+Sample Images in train.tfrecord:<br>
+<br>
+<img src="./assets/TFRecordInspector_train_USA_RoadSigns_86classes.png" width="640" height="auto"><br>
+<br>
+You can download the following the dataset created by the command above:
+<pre>
+COCO_USA_RoadSigns_86classes.zip
+TFRecord_USA_RoadSigns_86classes.zip
+realistic_test_dataset.zip
+YOLO_USA_RoadSigns_86classes.zip
+</pre>
+from here
+ <a href="https://drive.google.com/drive/folders/19JCN8gfT8RJH9wJStby-Sa9bfG0pel2L?usp=sharing">USA_RoadSigns_86classes</a>.<br>
+
 
