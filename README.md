@@ -364,7 +364,7 @@ python ../../TFRecordInspector.py ^
   ./TFRecord_Japanese-RoadSigns-90classes/label_map.pbtxt ^
   ./Inspector/train
 </pre>
-<br>
+
 Objects count in train.tfrecord:<br>
 <img src="./assets/TFRecordInspector_objects_count_Japanese_RoadSigns_90classes.png" width="640" height="auto"><br>
 <br>
@@ -458,14 +458,14 @@ Please run the following bat file to inspect the generated train.tfrecord.<br>
 <pre>
 tfrecord_inspect.bat<br>
 </pre>
-<br>
+
 Objects count in train.tfrecord:<br>
 <img src="./assets/TFRecordInspector_objects_count_USA_Roadsigns_160classes.png" width="640" height="auto"><br>
-<br>
+
 Sample Images in train.tfrecord:<br>
 <br>
 <img src="./assets/TFRecordInspector_train_USA_RoadSigns_160classes.png" width="640" height="auto"><br>
-<br>
+
 You can download the following V2 dataset created by the command above:
 <pre>
 COCO_USA_RoadSigns_160classes_V2.zip
@@ -475,7 +475,7 @@ YOLO_USA_RoadSigns_160classes_V2.zip
 </pre>
 from here
  <a href="https://drive.google.com/drive/folders/1ht0J3WnqNWXqfHT4QzzZ5xPheYpnhRWW?usp=sharing">USA_RoadSigns_160classes_V2</a>.<br>
-
+<br>
 
 <h2><a name="8">8 USA_RoadSigns_86classes</a></h2>
 <h3><a name="8.1">8.1. Create USA_RoadSigns_86classes project</a></h3>
@@ -493,7 +493,6 @@ Sample Images:<br>
 <b>USA_RoadSigns_86classes_tiny</b>; RoadSigns files of tiny size
 </li>
  Those PNG files have been take from the following websites:<br>
-<br>
 <!--
 <a href="https://github.com/sarah-antillia/PNG_USA_RoadSigns_160classes_V2">PNG_USA_RoadSigns_160classes_V2</a>
 <br>
@@ -509,10 +508,8 @@ Please run the following bat file to inspect the generated train.tfrecord.<br>
 <pre>
 tfrecord_inspect.bat<br>
 </pre>
-<br>
 Objects count in train.tfrecord:<br>
 <img src="./assets/TFRecordInspector_objects_count_USA_Roadsigns_86classes.png" width="640" height="auto"><br>
-<br>
 Sample Images in train.tfrecord:<br>
 <br>
 <img src="./assets/TFRecordInspector_train_USA_RoadSigns_86classes.png" width="640" height="auto"><br>
