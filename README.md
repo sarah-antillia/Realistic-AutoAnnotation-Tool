@@ -477,6 +477,9 @@ from here
  <a href="https://drive.google.com/drive/folders/1ht0J3WnqNWXqfHT4QzzZ5xPheYpnhRWW?usp=sharing">USA_RoadSigns_160classes_V2</a>.<br>
 <br>
 
+See also: <a href="https://github.com/atlan-antillia/EfficientDet-Slightly-Realistic-USA-RoadSigns-160classes">EfficientDet-Slightly-Realistic-USA-RoadSigns-160classes</a>
+
+<br>
 <h2><a name="8">8 USA_RoadSigns_86classes</a></h2>
 <h3><a name="8.1">8.1. Create USA_RoadSigns_86classes project</a></h3>
 You can create <b>USA_RoadSigns_86classes</b> project by running the following command.
@@ -514,7 +517,7 @@ Sample Images in train.tfrecord:<br>
 <br>
 <img src="./assets/TFRecordInspector_train_USA_RoadSigns_86classes.png" width="640" height="auto"><br>
 <br>
-You can download the following the dataset created by the command above:
+You can download the following dataset created by the command above:
 <pre>
 COCO_USA_RoadSigns_86classes.zip
 TFRecord_USA_RoadSigns_86classes.zip
@@ -523,5 +526,6 @@ YOLO_USA_RoadSigns_86classes.zip
 </pre>
 from here
  <a href="https://drive.google.com/drive/folders/19JCN8gfT8RJH9wJStby-Sa9bfG0pel2L?usp=sharing">USA_RoadSigns_86classes</a>.<br>
+<br>
 
-
+See also: <a href="https://github.com/atlan-antillia/EfficientDet-Slightly-Realistic-USA-RoadSigns-86classes">EfficientDet-Slightly-Realistic-USA-RoadSigns-86classes</a>
