@@ -501,19 +501,7 @@ Please run the following batch processing command to create YOLO, TFRecord and C
 <pre>
 create.bat
 </pre>
-<!--
-Please run the following bat file to inspect the generated train.tfrecord.<br>
-<pre>
-tfrecord_inspect.bat<br>
-</pre>
 
-Objects count in train.tfrecord:<br>
-<img src="./assets/TFRecordInspector_objects_count_US_Roadsigns_160classes.png" width="640" height="auto"><br>
-
-Sample Images in train.tfrecord:<br>
-<br>
-<img src="./assets/TFRecordInspector_train_US_RoadSigns_160classes.png" width="640" height="auto"><br>
--->
 <br>
 <h2><a name="9">9 US_RoadSigns_86classes</a></h2>
 <h3><a name="9.1">9.1. Create US_RoadSigns_86classes project</a></h3>
@@ -534,32 +522,7 @@ Please run the following batch processing command to create YOLO, TFRecord and C
 <pre>
 create.bat
 </pre>
-<!--
-Please run the following bat file to inspect the generated train.tfrecord.<br>
-<pre>
-tfrecord_inspect.bat<br>
-</pre>
-Objects count in train.tfrecord:<br>
-<img src="./assets/TFRecordInspector_objects_count_US_Roadsigns_86classes.png" width="640" height="auto"><br>
-Sample Images in train.tfrecord:<br>
-<br>
-<img src="./assets/TFRecordInspector_train_US_RoadSigns_86classes.png" width="640" height="auto"><br>
-<br>
--->
-<!--
-You can download the following dataset created by the command above:
-<pre>
-COCO_USA_RoadSigns_86classes.zip
-TFRecord_USA_RoadSigns_86classes.zip
-realistic_test_dataset.zip
-YOLO_USA_RoadSigns_86classes.zip
-</pre>
-from here
- <a href="https://drive.google.com/drive/folders/19JCN8gfT8RJH9wJStby-Sa9bfG0pel2L?usp=sharing">USA_RoadSigns_86classes</a>.<br>
-<br>
 
-See also: <a href="https://github.com/atlan-antillia/EfficientDet-Slightly-Realistic-USA-RoadSigns-86classes">EfficientDet-Slightly-Realistic-USA-RoadSigns-86classes</a>
--->
 
 <br>
 <h2><a name="10">10 UK_RoadSigns_94classes</a></h2>
