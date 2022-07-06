@@ -501,6 +501,16 @@ Please run the following batch processing command to create YOLO, TFRecord and C
 <pre>
 create.bat
 </pre>
+You can download the following dataset created by the command above:
+<pre>
+COCO_US_RoadSigns_160classes.zip
+TFRecord_US_RoadSigns_160classes.zip
+realistic_test_dataset.zip
+YOLO_US_RoadSigns_160classes.zip
+</pre>
+from here
+ <a href="https://drive.google.com/drive/folders/1S3n6gqOM9g9y3vT0-vd8vSyi5a22rDcG?usp=sharing">US_RoadSigns_160classes_V7</a>.<br>
+<br>
 
 <br>
 <h2><a name="9">9 US_RoadSigns_86classes</a></h2>
