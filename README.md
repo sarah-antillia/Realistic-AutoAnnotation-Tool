@@ -24,7 +24,7 @@ of a GUI-based annotation tool.
 <a href="#8">8 US_RoadSigns_160classes</a><br>
 <a href="#9">9 US_RoadSigns_86classes</a><br>
 <a href="#10">10 UK_RoadSigns_94classess</a><br>
-<a href="#11">11 FR_RoadSigns_152classess<br>
+<a href="#11">11 FR_RoadSigns_152classess</a><br>
 
 <br>
 <li>
