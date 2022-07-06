@@ -15,6 +15,8 @@
 # ImageEnhancer.py
 # 2022/05/10 
 
+# 2022/06/23 Modified to use medium and small section
+
 import os
 import sys
 import glob
@@ -33,55 +35,68 @@ class ImageEnhancer:
   def __init__(self):
     pass
 
+  # 2022/06/23 Modified to use medium and small section
   def run(self, config_ini, target):
     parser  = ConfigParser(config_ini)
     CONFIGS = "configs"
     #config1 = parser.get(CONFIGS, "color_enhancer_config")
+    MEDIUM  = "medium"
+    SMALL   = "small"
+    medium_rotator_config = parser.get(MEDIUM, "warp_rotator_config")
+    small_rotator_config  = parser.get(SMALL,  "warp_rotator_config")
 
-    small_rconfig = parser.get(CONFIGS, "warp_rotator_config_small")
-    tiny_rconfig  = parser.get(CONFIGS, "warp_rotator_config_tiny")
+    medium_trapezoider_config = parser.get(MEDIUM, "warp_trapezoider_config")
+    small_trapezoider_config  = parser.get(SMALL,  "warp_trapezoider_config")
 
-    small_tconfig = parser.get(CONFIGS, "warp_trapezoider_config_small")
-    tiny_tconfig  = parser.get(CONFIGS, "warp_trapezoider_config_tiny")
-
-    enhanced_images_dir = parser.get(CONFIGS, "enhanced_images_dir")
-    enhanced_images_dir = enhanced_images_dir + "_" + target
-    print("=== enhanced_images_dir {}".format(enhanced_images_dir))
-    if os.path.exists(enhanced_images_dir):
-      shutil.rmtree(enhanced_images_dir, ignore_errors=False, onerror=None)
+    medium_enhanced_images_dir = parser.get(MEDIUM, "enhanced_images_dir")
+    medium_enhanced_images_path = medium_enhanced_images_dir + "_" + target
+    print("=== medium_enhanced_images_path {}".format(medium_enhanced_images_path))
+    if os.path.exists(medium_enhanced_images_path):
+      shutil.rmtree(medium_enhanced_images_path, ignore_errors=False, onerror=None)
     else:
-      print("=== Create enhanced_images_dir {}".format(enhanced_images_dir))
-      os.makedirs(enhanced_images_dir)
+      print("=== Create enhanced_images_dir {}".format(medium_enhanced_images_path))
+      os.makedirs(medium_enhanced_images_path)
 
-    if small_rconfig != None:
-      parser = ConfigParser(small_rconfig)
+    small_enhanced_images_dir = parser.get(SMALL, "enhanced_images_dir")
+    small_enhanced_images_path = small_enhanced_images_dir + "_" + target
+    print("=== small_enhanced_images_path {}".format(small_enhanced_images_path))
+    if os.path.exists(small_enhanced_images_path):
+      shutil.rmtree(small_enhanced_images_path, ignore_errors=False, onerror=None)
+    else:
+      print("=== Create enhanced_images_dir {}".format(small_enhanced_images_path))
+      os.makedirs(small_enhanced_images_path)
+
+    if medium_rotator_config != None:
+      parser = ConfigParser(medium_rotator_config)
       input_dir  = parser.get(target, "input_dir")
       angles     = parser.get(target, "angles") 
       rotator    = ImageWarpRotator()
-      rotator.rotate(input_dir, angles, enhanced_images_dir)
-    if tiny_rconfig != None:
-      parser = ConfigParser(tiny_rconfig)
+      rotator.rotate(input_dir, angles, medium_enhanced_images_path)
+
+    if small_rotator_config != None:
+      parser = ConfigParser(small_rotator_config)
       input_dir  = parser.get(target, "input_dir")
       angles     = parser.get(target, "angles") 
       rotator    = ImageWarpRotator()
-      rotator.rotate(input_dir, angles, enhanced_images_dir)
+      rotator.rotate(input_dir, angles, small_enhanced_images_path)
 
-    if small_tconfig != None:
-      parser = ConfigParser(small_tconfig)
+    if medium_trapezoider_config != None:
+      parser = ConfigParser(medium_trapezoider_config)
       input_dir  = parser.get(target,     "input_dir")
       policy     = int(parser.get(target, "policy"))
       ws_list    = parser.get(target,     "ws_list")
       hs_list    = parser.get(target,     "hs_list") 
       trapezoider = ImageWarpTrapezoider()
-      trapezoider.generate(input_dir, enhanced_images_dir, ws_list, hs_list, policy=policy)
-    if tiny_tconfig != None:
-      parser = ConfigParser(tiny_tconfig)
+      trapezoider.generate(input_dir, medium_enhanced_images_path, ws_list, hs_list, policy=policy)
+
+    if small_trapezoider_config != None:
+      parser = ConfigParser(small_trapezoider_config)
       input_dir  = parser.get(target,     "input_dir")
       policy     = int(parser.get(target, "policy"))
       ws_list    = parser.get(target,     "ws_list")
       hs_list    = parser.get(target,     "hs_list") 
       trapezoider = ImageWarpTrapezoider()
-      trapezoider.generate(input_dir, enhanced_images_dir, ws_list, hs_list, policy=policy)
+      trapezoider.generate(input_dir, small_enhanced_images_path, ws_list, hs_list, policy=policy)
 
 
 # python ImageEnhancer ./projects/Something/image_enhance.conf train/valid/test

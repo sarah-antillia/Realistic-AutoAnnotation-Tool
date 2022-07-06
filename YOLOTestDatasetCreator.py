@@ -144,10 +144,10 @@ class YOLOTestDatasetCreator:
           WIDTH = self.MAX_IMAGE_WIDTH #240
           #w = 240
           g = int((self.BACKGROUND_IMAGE_WIDTH -WIDTH)/2)
-          X_POS = 20
-          Y_POS = 40
-          X_W   = 210
-          Y_H   = 120
+          X_POS = 10  # 20  2022/06/27
+          Y_POS = 10  # 40  2022/06/27
+          X_W   = 245 # 210 2022/06/27
+          Y_H   = 110 # 120 2022/06/27
 
           SPACE = " "
           NL    = "\n"

@@ -27,10 +27,11 @@ class ConfigCreator:
 
   def __init__(self, template_dir):
     self.template_dir = template_dir
+    self.CATEGORY     = "{CATEGORY}"
     self.DATASET_NAME = "{DATASET_NAME}"
     self.PROJECT_NAME = "{PROJECT_NAME}"
 
-  def run(self, dataset_name, project_name, output_dir):
+  def run(self, category, dataset_name, project_name, output_dir):
     print("=== ProjectCreator run")
     pattern = self.template_dir + "/*.conf"
     configs = glob.glob(pattern)
@@ -47,6 +48,7 @@ class ConfigCreator:
       tf.close()
       new_lines = []
       for line in lines:
+        line = line.replace(self.CATEGORY,     category)
         line = line.replace(self.DATASET_NAME, dataset_name)
         line = line.replace(self.PROJECT_NAME, project_name)
         new_lines.append(line)

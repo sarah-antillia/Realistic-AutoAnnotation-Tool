@@ -14,6 +14,10 @@
 
 # 
 # 2022/05/10 copyright (c) antillia.com
+# 2022/07/05 Modified  the command parameter:
+#  python ProjectCreator.py category dataset_name project_name
+# Example1: 
+#  python ProjectCreator.py roadsigns us_roadsigns  US_RoadSigns_86classes  
 #
 # ProjectCreator.py
 
@@ -24,16 +28,22 @@ import traceback
 from BatScriptCreator import BatScriptCreator
 from ConfigCreator import ConfigCreator
 
-# python ProjectCreator.py jp_signals Japanese_Signals
-# python ProjectCreator.py jp_roadsigns Japanese-RoadSigns-90classes
-# python ProjectCreator.py usa_roadsigns USA_RoadSigns_160classes
+"""
+python ProjectCreator.py roadsigns jp_roadsigns  JP_RoadSigns_90classes
+python ProjectCreator.py roadsigns us_roadsigns  US_RoadSigns_86classes
+python ProjectCreator.py roadsigns us_roadsigns  US_RoadSigns_160classes
+python ProjectCreator.py roadsigns fr_roadsigns  FR_RoadSigns_152classes
+python ProjectCreator.py roadsigns uk_roadsigns  UK_RoadSigns_94classes
+"""
 
-usage = "python ProjectCreator.py dataset_name project_name"
+usage = "python ProjectCreator.py category dataset_name project_name"
 
 if __name__ == "__main__":
   #config template dir
   template_dir  = "./config_templates/"
+  # 2022/07/04 Added category parameter
 
+  category      = ""
   dataset_name  = ""  
   project_name  = ""  # project_folder_name
   output_dir    = "./projects"
@@ -41,9 +51,10 @@ if __name__ == "__main__":
   btemplate_dir = "./batch_templates"
   boutput_dir   = "./"
   try:
-    if len(sys.argv) == 3:
-      dataset_name = sys.argv[1]
-      project_name = sys.argv[2]
+    if len(sys.argv) == 4:
+      category     = sys.argv[1]
+      dataset_name = sys.argv[2]
+      project_name = sys.argv[3]
     else:
       raise Exception(usage)
     if not os.path.exists(template_dir):
@@ -59,10 +70,9 @@ if __name__ == "__main__":
       os.makedirs(output_dir)
     
     config_creator = ConfigCreator(template_dir)
-    config_creator.run(dataset_name, project_name, configs_output_dir)
+    config_creator.run(category, dataset_name, project_name, configs_output_dir)
  
-    #2022/05/10 Moodified booutput_dir to be output_dir of project_name
-    
+    #2022/05/10 Moodified bat_output_dir to be output_dir of project_name
     bat_output_dir = output_dir
     if not os.path.exists(bat_output_dir):
       os.makedirs(bat_output_dir)

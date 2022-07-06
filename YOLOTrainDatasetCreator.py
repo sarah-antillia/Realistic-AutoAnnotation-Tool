@@ -14,6 +14,7 @@
 
 # 
 # 2022/05/10 copyright (c) antillia.com
+# 2022/06/23 Modified to use medium_images_dir and small_images_dir
 
 # YOLOTrainDatasetCreator.py
 
@@ -53,7 +54,7 @@ class YOLOTrainDatasetCreator:
       lines = f.readlines()
       for line in lines:
         classname = line.rstrip('\r\n')
-        
+        print("-------------classname {}".format(classname))
         if classname in self.classes:
           print("=== Error duplicate class name {}".format(classname))
           raise Exception("Duplicate class " + classname) 
@@ -78,6 +79,7 @@ class YOLOTrainDatasetCreator:
   # 2022/05/27 modified
   def getClassName(self, sname):
     cname = None
+    # xxx___{uuid4}
     pos = sname.find("___")
     if pos >0:
       sname = sname[0:pos]
@@ -91,7 +93,6 @@ class YOLOTrainDatasetCreator:
     if pos >0:
       cname = sname[0:pos]
     return cname
-
 
   def  validatePasteArea(self, bg_img, fg_img, px, py):
     w, h = fg_img.size
@@ -128,23 +129,34 @@ class YOLOTrainDatasetCreator:
             break
     return rc
 
-
-  def run(self, backgrounds_dir, images_dir, output_dir):
+  # 2022/06/23
+  def run(self, backgrounds_dir, medium_images_dir, small_images_dir, output_dir):
     if os.path.exists(backgrounds_dir) == False:
        raise Exception("Not found backgrounds_dir {}".format(backgrounds_dir))
-    if os.path.exists(images_dir) == False:
-       raise Exception("Not found images_dir {}".format(images_dir))
-    
+    if os.path.exists(medium_images_dir) == False:
+       raise Exception("Not found medium_images_dir {}".format(medium_images_dir))
+    if os.path.exists(small_images_dir) == False:
+       raise Exception("Not found small_images_dir {}".format(small_images_dir))
+ 
     if os.path.exists(output_dir):
        shutil.rmtree(output_dir) 
 
     if os.path.exists(output_dir) == False:
-       os.makedirs(output_dir)  
-  
+       os.makedirs(output_dir)
+
+    self.START_INDEX = 10000  
+    self.index = 0
+    self.create_from_small_images(backgrounds_dir,  small_images_dir,  output_dir)
+    self.create_from_medium_images(backgrounds_dir, medium_images_dir, output_dir)
+
+
+  # 2022/06/23 
+  def create_from_medium_images(self, backgrounds_dir, images_dir, output_dir):
     #Background 
     background_pattern   = backgrounds_dir  + "/*.jpg"
     background_files     = glob.glob(background_pattern)
-    background_files     = background_files*100
+    #background_files     = background_files*100
+
     images_pattern  = images_dir + "/*.png"
     images_files    = glob.glob(images_pattern)
     
@@ -160,8 +172,113 @@ class YOLOTrainDatasetCreator:
 
     classes_file = os.path.join(output_dir, "classes.txt")
     shutil.copy2(self.classes_file, classes_file)
+  
+    print("=== background_files len {}".format(len(background_files)))
 
-    index = 0
+    max = 0
+
+    length = len(background_files)
+    
+    print("--- length background_files {}".format(length) )
+
+    #Layout policy
+    # Paste 1 png images onto background images
+    #      
+    for image_file in images_files:
+        print("--- image_file {}".format(image_file))
+        background_file = random.choice(background_files)
+                 
+        #background = Image.open(background).convert("RGBA")
+        background = Image.open(background_file)
+        BW, BH = background.size
+        if BW != self.BACKGROUND_IMAGE_WIDTH and BH != self.BACKGROUND_IMAGE_HEIGHT:
+          print("Invalid background image size {} {}".format(BW, BH))
+          break
+        
+        try:      
+          #print("--- {} background {}".format(index, background))
+          
+          fname = self.dataset_prefix + str(self.START_INDEX + self.index) + ".jpg"
+          aname = self.dataset_prefix + str(self.START_INDEX + self.index) + ".txt"
+          self.index += 1
+
+          outputfile   = os.path.join(output_dir, fname)
+          annotation   = os.path.join(output_dir, aname) 
+          #print("=== output {}".format(outputfile))
+        
+          #g = int((self.BACKGROUND_IMAGE_SIZE - self.MAX_IMAGE_SIZE)/2)
+          #g = 10
+          SPACE = " "
+          NL    = "\n"
+          bgwidth  = self.BACKGROUND_IMAGE_WIDTH #512 
+          bgheight = self.BACKGROUND_IMAGE_HEIGHT #512
+
+          with open(annotation, "w") as f:
+              #print(" === i {} image {}".format(i, image_file))
+              image = Image.open(image_file).convert("RGBA")
+              W, H = image.size
+              px   = 10
+              py   = 10 
+
+              (px, py, W, H) = self.validatePasteArea(background, image, px, py)
+     
+              sname = os.path.basename(image_file)
+              print("--- getClassName--------sname {}".format(sname))
+              sname = self.getClassName(sname)
+              print("=== getClassName--------sname {}".format(sname))
+
+              classIndex = self.getClassIndex(sname)
+              if classIndex == -1:
+                raise Exception("FATAL ERROR: Not found clsss " + sname)
+
+              centerx = (px + (W)/2 ) / float(bgwidth)
+              centery = (py + (H)/2 ) / float(bgheight)
+              width   = (W ) / float(bgwidth)
+              height  = (H ) / float(bgheight)
+
+              centerx = round(centerx, 4)
+              centery = round(centery, 4)
+              width   = round(width,   4)
+              height  = round(height,  4)
+
+              ann     =  str(classIndex) + SPACE + str(centerx) + SPACE + str(centery) + SPACE + str(width) + SPACE + str(height) + NL
+              f.write(ann)
+              rc = self.paste(background, image, px, py)
+              if rc == False:
+                raise Exception("Failed to paste {}".format(image_file))
+                
+              print("--- pasted {}".format(image_file))
+            
+          print("=== save outputfile {}".format(outputfile))
+          background.save(outputfile, quality=95)
+          #
+          image.close()
+          max += 1
+        except:
+          traceback.print_exc()
+          break
+
+
+  def create_from_small_images(self, backgrounds_dir, images_dir, output_dir):
+    #Background 
+    background_pattern   = backgrounds_dir  + "/*.jpg"
+    background_files     = glob.glob(background_pattern)
+    #background_files     = background_files*100
+    images_pattern  = images_dir + "/*.png"
+    images_files    = glob.glob(images_pattern)
+    
+    num_images      = len(images_files)
+    num_backgroundfiles  = len(background_files)
+    print("=== Num backgroundFiles  {}".format(num_backgroundfiles))
+    print("=== Num imagesFiles {}".format(num_images))
+    background_files     = background_files * (int(num_images/num_backgroundfiles) + 1)
+
+    slen   = int(len(images_files)/4)
+    print("--- all_imagele len {}".format(num_images))
+    print("--- slen           {}".format(slen))
+
+    classes_file = os.path.join(output_dir, "classes.txt")
+    shutil.copy2(self.classes_file, classes_file)
   
     print("=== background_files len {}".format(len(background_files)))
 
@@ -175,8 +292,9 @@ class YOLOTrainDatasetCreator:
     # Paste 4 png images onto background images
     #      
     for n in range(slen):
-        background_file = background_files[n]
-        
+        #background_file = background_files[n]
+        background_file = random.choice(background_files)
+
         try:
           image1  = images_files[n]
           image2  = images_files[n+slen]
@@ -197,8 +315,9 @@ class YOLOTrainDatasetCreator:
         sample = [image1, image2, image3, image4]
         try:      
           #print("--- {} background {}".format(index, background))
-          fname = self.dataset_prefix + str(1000+n) + ".jpg"
-          aname = self.dataset_prefix + str(1000+n) + ".txt"
+          fname = self.dataset_prefix + str(self.START_INDEX + self.index) + ".jpg"
+          aname = self.dataset_prefix + str(self.START_INDEX + self.index) + ".txt"
+          self.index += 1
           outputfile   = os.path.join(output_dir, fname)
           annotation   = os.path.join(output_dir, aname) 
           #print("=== output {}".format(outputfile))
@@ -225,7 +344,7 @@ class YOLOTrainDatasetCreator:
                 n = i-2
                 m = 1
               px   = g  + self.MAX_IMAGE_SIZE * n
-              py   = 30 + self.MAX_IMAGE_SIZE * m
+              py   = 10 + self.MAX_IMAGE_SIZE * m
 
               (px, py, W, H) = self.validatePasteArea(background, image, px, py)
      
@@ -293,12 +412,16 @@ if __name__ == "__main__":
     classes_file    = parser.get(DATASET, "classes")
     auto_splitter   = parser.get(DATASET, "auto_splitter")
 
-    backgrounds_dir = parser.get(target,  "backgrounds_dir")
-    images_dir      = parser.get(target,  "images_dir")
-    output_dir      = parser.get(target,  "output_dir")
+    backgrounds_dir   = parser.get(target,  "backgrounds_dir")
+
+    # 2022/06/23 Modified to use medium_images_dir and small_images_dir
+    medium_images_dir = parser.get(target,  "medium_images_dir")
+    small_images_dir  = parser.get(target,  "small_images_dir")
+    
+    output_dir        = parser.get(target,  "output_dir")
 
     creator = YOLOTrainDatasetCreator(dataset_name, background_size, max_image_size, classes_file)
-    creator.run(backgrounds_dir, images_dir, output_dir)
+    creator.run(backgrounds_dir, medium_images_dir, small_images_dir, output_dir)
 
     if target == "master":
        splitted_train_dir = parser.get("train", "output_dir")
@@ -306,7 +429,5 @@ if __name__ == "__main__":
        splitter = YOLOMasterDatasetSplitter()
        splitter.run(output_dir, splitted_train_dir, splitted_valid_dir, classes_file)
  
-
-
   except:
     traceback.print_exc()
