@@ -627,5 +627,5 @@ See also:<a href="https://github.com/atlan-antillia/EfficientDet-Slightly-Realis
 <br>
 Inference example:<br>
 <img src="./assets/fr_roadsigns_1060.jpg" width="1024" height="auto">
-<br>
+
 
