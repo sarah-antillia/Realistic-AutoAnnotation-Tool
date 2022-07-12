@@ -2,10 +2,10 @@
 This is an experimental project to implement <b>Antillia Realistic AutoAnnotation Tool(ARAAT)</b> for Object Detection.<br>
 
 It generates a realistic image dataset for training and validation, which is artificially made from a small 
-real or realistic images, and annotate those images automatically for object detection.<br>
+real or realistic images, and annotates those images automatically for object detection.<br>
 For example, imagine to take a lot of real roadsigns pictures in US in a real world for 
 training of object detection task.
-Probably, it is difficult to gather such a pictures, because the classes of roadsigns in US is more than 160.
+Probably, it is difficult to gather enough roadsigns images, because the classes of roadsigns in US is more than 160.
 One of other approaches to alleviate the difficulties is  
 to generate a lot of realistic and artificial images from some real or realistic object images including illustration
  by using any image augmentation methods.
