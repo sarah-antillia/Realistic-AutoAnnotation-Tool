@@ -9,8 +9,8 @@ Probably, it is difficult to gather enough roadsigns images, because the classes
 One of other approaches to alleviate the difficulties is  
 to generate a lot of realistic and artificial images from some real or realistic object images including illustration
  by using any image augmentation methods.
-In this project, we try to design and implement a Realistic AutoAnnotation Tool, which genenetes a 
-realistc images dataset, and annotation files to those images automatically,without any manual mouse operations 
+In this project, we try to design and implement a Realistic AutoAnnotation Tool, which generates a 
+realistic images dataset, and annotation files to those images automatically,without any manual mouse operations 
 of a GUI-based annotation tool.
 <br> 
 <br>
@@ -85,7 +85,7 @@ If you would like to get started your own project, you have to do:<br>
   Those backgrounds must have same image size 1280x720. <br>
   <br>
 The minimum image set will be augmented by our augmentation tool(python scripts), and the augmented images 
-will be pasted on train, valid, test bacground images to generate realistic dataset for object detection.<br>
+will be pasted on train, valid, test background images to generate realistic dataset for object detection.<br>
 <br>
 
 <h3>1.3 Create a project</h3>
@@ -105,7 +105,7 @@ python ProjectCreator.py roadsigns jp_roadsigns Japanese_RoadSigns_90classes
 <br>
 <a href="https://commons.wikimedia.org/wiki/Road_signs_in_Japan">commons.wikimedia.org: Road signs in Japan</a>
 <br>
-The following backgroud foloders contain background jpg images files, which will be used as the background images to generate
+The following background folders contain background jpg images files, which will be used as the background images to generate
 test, train and valid dataset.<br> 
 
 <pre>
@@ -154,7 +154,7 @@ Please move to your project directory, and run the following <b>0_image_enhancer
 <pre>
 ./0_image_resizer.bat
 </pre>
-, which is the followng:<br>
+, which is the following:<br>
 <pre>
 rem 0_image_resizer.bat
 python ../../PNGImageResizer.py ./configs/0_image_resizer.conf
@@ -184,7 +184,7 @@ Please move to your project directory, and run the following <b>1_image_enhancer
 <pre>
 ./1_image_enhancer.bat
 </pre>
-, which is the followng:<br>
+, which is the following:<br>
 <pre>
 python ../../ImageEnhancer.py ./configs/1_image_enhancer.conf train
 python ../../ImageEnhancer.py ./configs/1_image_enhancer.conf test
@@ -220,7 +220,7 @@ This will generate the following enhanced image folders:<br>
 <h2><a name="4">4 Create YOLO dataset</a></h2>
 
 <h3>4.1 Create train and valid dataset</h3>
-In your projecr folder, please run the following <b>2_yolo_train_dataset_creator.bat</b>.<br>
+In your project folder, please run the following <b>2_yolo_train_dataset_creator.bat</b>.<br>
 <pre>
 ./2_yolo_train_dataset_creator.bat
 </pre>
@@ -262,7 +262,7 @@ images_dir        = "./Enhanced_images_valid"
 output_dir        = "./YOLO_JP_RoadSigns_90classes/valid"
 </pre>
 
-This bat file wll generate <b>YOLO_JP_RoadSigns_90classes</b> folder, which contain train and valid dataset(images and annotation files).
+This bat file will generate <b>YOLO_JP_RoadSigns_90classes</b> folder, which contains train and valid dataset(images and annotation files).
 <pre>
 └─YOLO_JP_RoadSigns_90classes
     ├─master
@@ -301,7 +301,7 @@ Sample images of YOLO master dataset<br>
 </table>
 
 <h3>4.2 Create realistic test dataset</h3>
-In your projecr folder, please run the following <b>3_yolo_test_dataset_creator.bat</b> to create realistic test dataset.<br>
+In your project folder, please run the following <b>3_yolo_test_dataset_creator.bat</b> to create realistic test dataset.<br>
 <pre>
 ./3_yolo_test_dataset_creator.bat
 </pre>
@@ -330,7 +330,7 @@ output_dir      = "./realistic_test_dataset"
 num_test_dataset= 100
 </pre>
 
-This wll generate realistc_test_dataset folder, which contain test dataset(images and annotation files).
+This will generate realistic_test_dataset folder, which contain test dataset(images and annotation files).
 <pre>
 └─realistic_test_dataset
 </pre>
@@ -364,7 +364,7 @@ Sample images of <b>realistic_test_dataset</b><br>
 <br>
 
 <h2><a name="5">5 Create TFRecord dataset</a> </h2>
-In your projecr folder, please run the following <b>4_yolo2tfrecord_converter.bat</b> 
+In your project folder, please run the following <b>4_yolo2tfrecord_converter.bat</b> 
 to convert YOLO annotation dataset to TFRecord:<br>
 
 <pre>
