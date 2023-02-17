@@ -1,0 +1,6 @@
+call 0_image_resizer.bat
+call 1_image_enhancer.bat
+call 2_yolo_train_dataset_creator.bat
+call 3_yolo_test_dataset_creator.bat
+call 4_yolo2tfrecord_converter.bat
+call 5_yolo2coco_converter.bat

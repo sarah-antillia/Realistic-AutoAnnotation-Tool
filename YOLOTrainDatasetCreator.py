@@ -296,10 +296,10 @@ class YOLOTrainDatasetCreator:
         background_file = random.choice(background_files)
 
         try:
-          image1  = images_files[n]
-          image2  = images_files[n+slen]
-          image3  = images_files[n+slen*2]
-          image4  = images_files[n+slen*3]
+          image1  = images_files[n*4]
+          image2  = images_files[n*4 + 1]
+          image3  = images_files[n*4 + 2]
+          image4  = images_files[n*4 + 3]
 
         except Exception as ex:
           traceback.print_exc()
