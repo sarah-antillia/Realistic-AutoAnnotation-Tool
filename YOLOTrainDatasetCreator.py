@@ -17,6 +17,7 @@
 # 2022/06/23 Modified to use medium_images_dir and small_images_dir
 
 # YOLOTrainDatasetCreator.py
+# 2023/02/18 Updated create_from_small_images and create_from_medium_images methods.
 
 import os
 import sys
