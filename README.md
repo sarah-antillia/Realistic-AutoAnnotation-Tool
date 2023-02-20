@@ -1,4 +1,4 @@
-<h1>Antillia Realistic AutoAnnotation Tool (Updated: 2023/02/20)</h1>
+<h1>Antillia Realistic AutoAnnotation Tool (Updated: 2023/02/21)</h1>
 This is an experimental project to implement <b>Antillia Realistic AutoAnnotation Tool(ARAAT)</b> for Object Detection.<br>
 
 It generates a realistic image dataset for training and validation, which is artificially made from a small 
@@ -42,6 +42,9 @@ of a GUI-based annotation tool.
 </li>
 <li>
  Fixed bugs in create_images_* methods of YOLOTrainDatasetCreator.py.</b> (2023/02/18).
+</li>
+<li>
+ Added YOLOMixedSizeDatasetCreator.py.</b> (2023/02/21).
 </li>
 
 <br>
