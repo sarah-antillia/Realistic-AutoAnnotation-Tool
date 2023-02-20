@@ -1,0 +1,1 @@
+python ../../YOLOMixedSizeDatasetCreator.py ./configs/7_yolo_mixed_size_dataset_creator.conf

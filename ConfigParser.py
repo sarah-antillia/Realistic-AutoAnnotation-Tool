@@ -63,6 +63,8 @@ class ConfigParser:
       value = eval(value)
       
     except:
+      #2023/02/20
+      value = ""
       traceback.print_exc()   
     return value
 

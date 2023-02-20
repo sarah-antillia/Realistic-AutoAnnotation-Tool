@@ -4,3 +4,6 @@ call 2_yolo_train_dataset_creator.bat
 call 3_yolo_test_dataset_creator.bat
 call 4_yolo2tfrecord_converter.bat
 call 5_yolo2coco_converter.bat
+call 7_yolo_mixed_size_dataset_creator.bat
+call 8_yolo_mixed_size_2tfrecord_converter.bat
+

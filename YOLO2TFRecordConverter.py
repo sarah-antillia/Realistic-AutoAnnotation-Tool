@@ -17,7 +17,7 @@
 # 
 # 2022/05/10 copyright (c) antillia.com
 # 2022/05/10 Modified filename to YOLO2TFRecordConverter.py
-
+# 2023/02/20 Modified constructor of YOLO2TFRecordConverter class to take clases
 import os
 import sys
 
@@ -39,7 +39,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 class YOLO2TFRecordConverter:
 
   def __init__(self, images_dir, yolo_anno_dir, output_dir, 
-               dataset="train", filename="foo.tfrecord"):
+               dataset="train", filename="foo.tfrecord", classes_file="./classes.txt"):
                
     self.images_dir    = images_dir
     self.yolo_anno_dir = yolo_anno_dir
@@ -47,7 +47,9 @@ class YOLO2TFRecordConverter:
     self.dataset       = dataset
     self.filename      = filename
     self.class_map     = []
-    classes_file       = os.path.join(yolo_anno_dir, "classes.txt")
+    #2023/02/20
+    classes_file       = classes_file #os.path.join(yolo_anno_dir, "classes.txt")
+
     if os.path.exists(classes_file) == False:
       raise Exception("No found " + classes_file)
       
@@ -202,6 +204,7 @@ if __name__ == "__main__":
     tfrecord_dir     = parser.get(DATASET, "tfrecord_dir")
     label_map_pbtxt  = parser.get(DATASET, "label_map_pbtxt")
     label_map_yaml   = parser.get(DATASET, "label_map_yaml")
+    tfrecord_prefix  = parser.get(DATASET, "tfrecord_prefix")
 
     if os.path.exists(tfrecord_dir):
       shutil.rmtree(tfrecord_dir)
@@ -225,13 +228,14 @@ if __name__ == "__main__":
       if os.path.exists(anno_dir) == False:
         raise Exception("Not found " + anno_dir)
        
-      filename = target + ".tfrecord"
+      filename = tfrecord_prefix + target + ".tfrecord"
       
       converter = YOLO2TFRecordConverter(images_dir, 
                  anno_dir, 
                  tfrecord_dir, 
                  dataset  = target, 
-                 filename = filename)
+                 filename = filename,
+                 classes_file = classes_file)
       converter.run()
         
 
