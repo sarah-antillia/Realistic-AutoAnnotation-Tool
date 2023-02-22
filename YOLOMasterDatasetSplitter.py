@@ -41,8 +41,8 @@ class YOLOMasterDatasetSplitter:
 
 
     image_files = glob.glob(yolo_master_dir + "/*.jpg")
+    print("----- yolo_master_dis {}".format(yolo_master_dir))
     print("--- files {}".format(len(image_files)))
-
     train_image_files, test_image_files = train_test_split(image_files)
     print("---train len {}".format(len(train_image_files)))
     print("---valid len {}".format(len(test_image_files)))
